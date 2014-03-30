@@ -1,6 +1,7 @@
 TEX_DEPS := tex/copyright.tex tex/prelude.tex
 
-IMAGE_DEPS := img/CommBadge.eps img/FateLight.eps img/Phaser.eps
+IMAGE_DEPS := img/CommBadge.eps img/ConstitutionClass.eps img/FateLight.eps \
+    img/Federation.eps img/Phaser.eps
 
 OUTPUT_DIR := output
 
