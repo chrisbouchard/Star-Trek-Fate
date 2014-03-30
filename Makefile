@@ -6,8 +6,10 @@ OUTPUT_DIR := output
 
 LATEXMK_OPTS := -xelatex
 
-all : Our\ Setting.pdf Star\ Trek\ Fate.pdf
+.PHONY : all
 
-%.pdf : %.tex $(TEX_DEPS) $(IMAGE_DEPS)
+all : $(OUTPUT_DIR)/Our_Setting.pdf $(OUTPUT_DIR)/Star_Trek_Fate.pdf
+
+$(OUTPUT_DIR)/%.pdf : %.tex $(TEX_DEPS) $(IMAGE_DEPS)
 	latexmk -outdir=$(OUTPUT_DIR) -pdf -dvi- -ps- $(LATEXMK_OPTS) '$<'
 
