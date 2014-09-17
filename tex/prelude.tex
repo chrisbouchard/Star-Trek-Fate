@@ -23,8 +23,9 @@
 \usepackage{float}
 \usepackage{wrapfig}
 \usepackage{lettrine}
+\usepackage{titlesec}
 
-\newfontfamily\startrek{FederationClassic}
+\newfontfamily\startrek{Star Trek Enterprise Future}
 \newfontfamily\fatefont{Fate Core Glyphs}
 \newfontfamily\handwritingfont[Scale=0.9]{Permanent Marker}
 
@@ -32,6 +33,27 @@
 \setmonofont[Scale=0.9]{Luxi Mono}
 
 \urlstyle{same}
+
+\titleformat{\chapter}[display]%
+    {\fontsize{0.65in}{0.4in}\selectfont\startrek}%
+    {\chaptertitlename~\thechapter}%
+    {15pt}%
+    {\fontsize{0.75in}{0.4in}\selectfont\startrek}
+
+\titleformat{\section}[hang]%
+    {\fontsize{0.4in}{0.3in}\selectfont\startrek}%
+    {\thesection}%
+    {20pt}%
+    {\fontsize{0.4in}{0.3in}\selectfont\startrek}
+
+\titleformat{\subsection}[hang]%
+    {\fontsize{0.3in}{0.2in}\selectfont\startrek}%
+    {\thesubsection}%
+    {15pt}%
+    {\fontsize{0.3in}{0.2in}\selectfont\startrek}
+
+\titlespacing*{\section}{0pt}{*6}{*2}
+\titlespacing*{\subsection}{0pt}{*4}{*1}
 
 \renewcommand{\dateseparator}{-}
 
@@ -46,15 +68,11 @@
 }
 \makeatother
 
-\newcommand{\STFLogo}{%
-    {\startrek STAR} {\startrek TREK}:
-    \includegraphics[height=1em]{img/FateLightBW.pdf}%
-}
-
 \newcommand{\Fate}{\textit{Fate}}
-\newcommand{\FateCore}{\textit{Fate Core}}
+\newcommand{\FateCore}{\textit{\Fate{} Core}}
+\newcommand{\FateSystemToolkit}{\textit{\Fate{} System Toolkit}}
 \newcommand{\StarTrek}{\textit{Star Trek}}
-\newcommand{\StarTrekFate}{\textit{Star Trek: Fate}}
+\newcommand{\StarTrekFate}{\textit{\StarTrek{}:\ \Fate{}}}
 
 \newcommand{\skill}[1]{#1}
 \newcommand{\aspect}[1]{\textbf{\textit{#1}}}
@@ -99,17 +117,19 @@
     \ifstrequal{#1}{D}{Defend}{}%
 }
 
+\newcommand{\SkillActionIcon}[1]{{\fatefont{}{#1}}}
+
 \newlength{\currentparindent}
 \NewEnviron{SkillActionList}{%
     \setlength{\currentparindent}{\parindent}%
     \begin{longtable}[l]{p{25pt}p{\linewidth-45pt}}%
         \BODY%
     \end{longtable}%
-    \vspace*{-1em}%
+    \vspace{-1.5em}%
 }
 
 \newcommand{\SkillActionEntry}[2]{%
-    \raisebox{-10pt}{\Huge\fatefont{}{#1}}&%
+    \raisebox{-11pt}{\Huge\SkillActionIcon{#1}}&%
     \setlength{\parindent}{\currentparindent}%
     \noindent\textbf{{\SkillActionName{#1}:}} #2 \\ & \\%
 }

@@ -3,9 +3,7 @@
 
 \input{tex/prelude.tex}
 
-\geometry{bindingoffset=0in}
-
-\title{Star Trek: Fate}
+\title{\StarTrekFate{}}
 \author{Chris Bouchard}
 \date{\yyyymmdddate\today}
 
@@ -14,17 +12,24 @@
 \begin{document}
 
 \begin{titlepage}
-    \pdfbookmark{STAR TREK: Powered by FATE}{Title Page}
-    \vspace*{0.5in}
+    \pdfbookmark{\StarTrekFate{}}{Title Page}
+    \vspace*{0.6in}
     \begin{center}
         \includegraphics[height=2.5in]{img/CommBadge.eps}\\
-        \vspace*{0.4in}
-        {\fontsize{0.75in}{1em}\selectfont\STFLogo}\\
-        \vspace*{\fill}
-        {\fontsize{0.3in}{1em}\selectfont{}\theauthor}\\
-        \vspace*{0.2in}
-        {\fontsize{0.25in}{1em}\selectfont{}\thedate}
+        \vspace*{0.7in}
+        {\startrek\fontsize{0.9in}{0.4in}\selectfont\thetitle}\\
     \end{center}
+    \vspace*{\fill}
+
+    \noindent
+    \begin{tabular}{b{0.5\linewidth}>{\raggedleft}b{0.5\linewidth}}
+        {\startrek\fontsize{0.4in}{0.3in}\selectfont\theauthor}
+        \vspace{0.2in}\newline
+        {\Huge\startrek\thedate}
+        &
+        \includegraphics[height=0.9in]{img/FateLight.eps}
+        \hspace*{0.2in}
+    \end{tabular}
 \end{titlepage}
 
 \cleardoublepage
@@ -34,6 +39,7 @@
 \end{center}
 \cleardoublepage
 
+\pdfbookmark{Contents}{Contents}
 \tableofcontents
 \cleardoublepage
 
@@ -44,7 +50,10 @@
 \chapter{Introduction}\label{chap:intro}
 
 \begin{center}
-\textit{``Space: The final frontier. These are the voyages of the starship\ldots''}
+    \includegraphics[width=0.6\linewidth]{img/Enterprise.eps}\\
+    \vspace{2ex}
+    \textit{``Space: The final frontier. These are the voyages of the
+    starship\ldots''}
 \end{center}
 
 \vspace{1em}
@@ -61,11 +70,17 @@ have made and clarifies some interactions. We will refer to page numbers in the
 2013 hard-cover printing.
 
 In addition to the materials described in the section What You Need to Play on
-page 3 of the \FateCore{} book, we also recommend that you have access to
+page~3 of the \FateCore{} book, we also recommend that you have access to
 ``official Federation records'' --- some reference for the \StarTrek{} setting
 that your entire group agrees to follow. This document was created using Memory
 Alpha,\footnote{Memory Alpha: \url{http://www.memory-alpha.org}} a public
 \StarTrek{} wiki.
+
+We occasionally make references to the \FateSystemToolkit{}, EHP0005. This book
+is not required for play, but we have cherry-picked a few rules from the
+toolkit and adapted them to our setting. When we do, we provide a reference to
+this book for additional details. We will refer to page numbers in the 2013
+eBook printing.
 
 \section{Play Style}
 
@@ -82,23 +97,20 @@ important (which is why this document exists), but after all the fun of
 
 \chapter{\StarTrek{} Life}\label{chap:life}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\linewidth]{img/Federation.eps}
-\end{figure}
-
-\section{Living in the Federation}
-
 \begin{center}
-\textit{``A dream that became a reality and spread throughout the stars.''\\
---- Captain James T. Kirk, 2269}
+    \includegraphics[width=0.5\linewidth]{img/Federation.eps}\\
+    \vspace{2ex}
+    \textit{``A dream that became a reality and spread throughout the
+    stars.''\\ --- Captain James T. Kirk, 2269}
 \end{center}
 
-\noindent
-The assumed setting for \StarTrekFate{} is the United Federation of Planets, or
-at least somewhere within the Alpha Quadrant. This is the part of the galaxy
-explored in the majority of the \StarTrek{} franchise. Your characters are
-likely Federation citizens, and if not they are very familiar with it.
+\noindent \lettrine[lines=1]{T}{he} assumed setting for \StarTrekFate{} is the
+United Federation of Planets, or at least somewhere within the Alpha Quadrant.
+This is the part of the galaxy explored in the majority of the \StarTrek{}
+franchise. Your characters are likely Federation citizens, and if not they are
+very familiar with it.
+
+\section{Living in the Federation}
 
 The big thing to remember about the Federation is that it is a utopian society.
 It was founded on the principles of universal liberty, rights, and equality. In
@@ -118,77 +130,24 @@ they can be fixed.
 
 The main focus of \StarTrek{} has always been Starfleet, and this game is no
 different. Starfleet is the deep-space exploratory and defense service of the
-Federation, and it captures all the ideals of Federation society. Starfleet
+Federation, and it captures all the ideals of Federation society.
 
 There are two ways your character could have joined Starfleet: enlisting or
-attending Starfleet Academy.
+receiving a commission. Enlisted personnel form the rank and file of Starfleet.
+They keep the ships running. They're the security guards, transporter operators,
+and medical technicians. Any enlisted rank is below that of a commissioned
+officer, so even seasoned CPOs must refer to ensigns as ``sir'', however such
+seasoned personnel would likely wield influence far beyond their place in the
+rank structure due to their extensive experience and skill.
 
-\subsection*{That's an Order!}\label{subsec:orders}
+Receiving a commission means being authorized to hold an officer's rank, with
+all the privileges and responsibilities that rank entails. Usually a
+comissioned officer has graduated from Starfleet Academy and worked his or her
+way up from the rank of Ensign. However, in times of conflict, or when contact
+with Starfleet is not possible for extended periods, a temporary commission
+could appoint persons to other ranks.
 
-Starfleet officers and personnel give and obey orders on a daily basis. When
-one character wishes to give an order to another, there are several ways the GM
-can choose to resolve the situation depending on the situation and the
-characters involved.
-
-For most orders from a superior to a subordinate, no special action will be
-needed. This is Starfleet, and your character is a trained professional.
-Unless your character has a good reason, he or she should generally follow the
-orders of superior officers without a fight.
-
-Some orders, however, are simply unacceptable. Such orders may conflict with
-one of your character's aspects, or they may be a violation of Starfleet
-regulations. In this case, the GM has two options for resolution. He or she
-may choose to compel your character's rank aspect, in which case refer to the
-\nameref{sec:aspects-orders} section of the \nameref{chap:aspects} chapter.
-Otherwise, the order can be resolved using social combat --- or even physical
-combat if it comes to it. This option should be saved as a last resort, since
-it represents true insubordination.
-
-Finally, for characters outside of Starfleet, the orders of an officer do not
-have the same impact. In this case, social combat is the only appropriate way
-for one character to command another.
-
-
-
-\chapter{Aspects}\label{chap:aspects}
-
-\lettrine[lines=1]{T}{he} \FateCore{} system uses aspects to help give
-characters individuality and personality. In \StarTrekFate{}, will modify this
-system slightly, adding an extra aspect and imposing some requirements. This
-will reflect how big of a commitment being in Starfleet is for your character,
-and how much it has shaped his or her life. This chapter details these
-requirements.
-
-\section{High Concept}\label{sec:high-concept}
-
-Joining Starfleet is a major, life-changing decision. Thus, it should be
-reflected in your character's high concept. A chief engineer may have the high
-concept \aspect{Starfleet Gearhead}. Of course, if your character is not a
-member of Starfleet, this requirement does not apply to you, though some other
-organization may fill this role for your character, such as a Vulcan scientist
-with the high concept \aspect{Researcher of the Science Academy}.
-
-\section{Species}\label{sec:species}
-
-Your character's species is definitely a defining characteristic. The story of
-\StarTrek{} is told from the Humans' perspective, so for better or for worse
-that is the ``default'' species. A player may choose another species with GM
-approval. For common species, especially species that are members of the
-Federation, the GM should generally err on the side of allowing the choice.
-Starfleet does not discriminate on the basis of species --- there have been
-Klingon and even Ferengi officers. A non-Human character must have an aspect
-reflecting his or her species, but it need not be the high concept.
-
-\section{Rank}\label{sec:rank}
-
-A character's position in Starfleet is a defining characteristic --- remember,
-your character has devoted his or her life to joining and advancing within Star
-Fleet. Your character has an extra aspect representing his or her rank. You may
-invoke this aspect to draw on your character's experience and training, as well
-as the respect his or her rank commands. Your rank aspect may be compelled to
-force your character to act as his or her rank dictates, perhaps to follow
-distasteful orders or to uphold the Prime Directive.
-
+\section{Rank and Title}\label{sec:orders}
 
 Different versions of \StarTrek{} have not consistently used the same ranks.
 For this setting, we will be using the following set, listed from lowest rank
@@ -226,6 +185,73 @@ character creation.)}
 
 \vspace{1em}
 
+Starfleet officers and personnel give and obey orders on a daily basis. When
+one character wishes to give an order to another, there are several ways the GM
+can choose to resolve the situation depending on the situation and the
+characters involved.
+
+For most orders from a superior to a subordinate, no special action will be
+needed. This is Starfleet, and your character is a trained professional.
+Unless your character has a good reason, he or she should generally follow the
+orders of superior officers without a fight.
+
+Some orders, however, are simply unacceptable. Such orders may conflict with
+one of your character's aspects, or they may be a violation of Starfleet
+regulations. In this case, the GM has two options for resolution. He or she may
+choose to compel your character's rank aspect, in which case refer to the
+section \nameref{sec:aspects-orders} on page~\pageref{sec:aspects-orders}.
+Otherwise, the order can be resolved using social combat --- or even physical
+combat if it comes to it. This option should be saved as a last resort, since
+it represents true insubordination.
+
+Finally, for characters outside of Starfleet, the orders of an officer do not
+have the same impact. In this case, social combat is the only appropriate way
+for one character to command another.
+
+
+
+\chapter{Aspects}\label{chap:aspects}
+
+\lettrine[lines=1]{T}{he} \FateCore{} system uses aspects to help give
+characters individuality and personality. In \StarTrekFate{}, will modify this
+system slightly, adding an extra aspect and imposing some requirements. This
+will reflect how big of a commitment being in Starfleet is for your character,
+and how much it has shaped his or her life. This chapter details these
+requirements.
+
+\section{High Concept}\label{sec:high-concept}
+
+Joining Starfleet is a major, life-changing decision. Thus, it should be
+reflected in your character's high concept. For example, a chief engineer could
+have the high concept \aspect{Starfleet Gearhead}. Of course, if your character
+is not a member of Starfleet, this requirement does not apply to you, though
+some other organization may fill this role for your character, such as a Vulcan
+scientist with the high concept \aspect{Researcher of the Science Academy}.
+
+\section{Species Aspect}\label{sec:species}
+
+Your character's species is definitely a defining characteristic. The story of
+\StarTrek{} is told from the Humans' perspective, so for better or for worse
+that is the ``default'' species. A player may choose another species with GM
+approval. For common species, especially species that are members of the
+Federation, the GM should generally err on the side of allowing the choice.
+Starfleet does not discriminate on the basis of species --- there have been
+Klingon and even Ferengi officers. A non-Human character must have an aspect
+reflecting his or her species, but it need not be the high concept.
+
+Chosing a different species has additional requirements. See the chapter
+\nameref{chap:species} on page~\pageref{chap:species} for more information.
+
+\section{Rank Aspect}\label{sec:rank}
+
+A character's position in Starfleet is a defining characteristic --- remember,
+your character has devoted his or her life to joining and advancing within Star
+Fleet. Your character has an extra aspect representing his or her rank. You may
+invoke this aspect to draw on your character's experience and training, as well
+as the respect his or her rank commands. Your rank aspect may be compelled to
+force your character to act as his or her rank dictates, perhaps to follow
+distasteful orders or to uphold the Prime Directive.
+
 If your character is not a member of Starfleet, you may use this aspect to
 denote your character's rank within some other similar organization, such as a
 Romulan with the aspect \aspect{Centurion} or a Vulcan with the aspect
@@ -235,11 +261,11 @@ organization, your character should have the aspect \aspect{Civilian}.
 \section{Aspects and Orders}\label{sec:aspects-orders}
 
 Giving and obeying orders is part and parcel of having a rank, and thus it is
-core to your Starfleet character. An order starts as two characters talking.
-When a captain gives an order to an ensign, for example, this does not
+core to your Starfleet character. An order starts simply as two characters
+talking. When a captain gives an order to an ensign, for example, this does not
 necessarily create a compel. However, if the GM or the ensign's player feel the
-order is unreasonable, the GM may choose to compel the ensign's rank aspect,
-at which point the captain's and ensign's players and the GM work together to
+order is unreasonable, the GM may choose to compel the ensign's rank aspect, at
+which point the captain's and ensign's players and the GM work together to
 determine how the compel will be fulfilled.
 
 Note that the superior officer's player is not requesting a compel. It would be
@@ -269,40 +295,46 @@ unacceptable.
 
 \chapter{Skills}\label{chap:skills}
 
-\lettrine[lines=1]{A}{s} much as possible, skills work the same in
-\StarTrekFate{} as they do in \FateCore{}. However, the setting of \StarTrek{}
-is different enough that we felt some changes were required. We decided to
-change the way skills are chosen at character creation. The skills Provoke and
-Rapport have been removed (they are now covered by the new skill Presence).
-Also, several skills have been renamed: Crafts to Engineering, Drive to Pilot,
-and Lore to Academics. Finally, some new skills have been added: Bureaucracy,
-Medicine, Presence, and Survival. This chapter details the changes we made.
+\lettrine[lines=1]{I}{n} \Fate{}, skills describe your character's abilities.
+Every action you take in the game will be based on a skill, and each skill
+covers a broad area of competency. It's a good idea to be familiar with the
+section Defining Skills on page~86 of the \FateCore{} book, as well as the
+default skill descriptions starting on page~96, before reading this chapter. As
+much as possible, skills work the same in \StarTrekFate{} as they do in
+\FateCore{}. However, the setting of \StarTrek{} is different enough that we
+felt some changes were required.
 
-Here is the final skill list for this game:
+We decided to change the way skills are chosen at character creation. Some
+skills have been combined into new, broader skills; some skills have been
+renamed and rethemed; and some brand new skills have been added. This chapter
+details the changes in further detail.
+
+For convenience, here is the complete skill list for \StarTrekFate{}. Skills
+not described in \FateCore{} (i.e., renamed or new skills) have been bolded.
 
 \begin{multicols}{3}
     \raggedcolumns
     \begin{itemize}
-        \item Academics
-        \item Athletics
-        \item Bureaucracy
-        \item Burglary
-        \item Contacts
-        \item Deceive
-        \item Empathy
-        \item Engineering
-        \item Fight
-        \item Investigate
-        \item Medicine
-        \item Notice
-        \item Physique
-        \item Pilot
-        \item Presence
-        \item Resources
-        \item Shoot
-        \item Stealth
-        \item Survival
-        \item Will
+        \item \textbf{\skill{Academics}}
+        \item \skill{Athletics}
+        \item \textbf{\skill{Bureaucracy}}
+        \item \skill{Burglary}
+        \item \skill{Contacts}
+        \item \skill{Deceive}
+        \item \skill{Empathy}
+        \item \textbf{\skill{Engineering}}
+        \item \skill{Fight}
+        \item \skill{Investigate}
+        \item \textbf{\skill{Medicine}}
+        \item \skill{Notice}
+        \item \skill{Physique}
+        \item \textbf{\skill{Pilot}}
+        \item \textbf{\skill{Presence}}
+        \item \skill{Resources}
+        \item \skill{Shoot}
+        \item \skill{Stealth}
+        \item \textbf{\skill{Survival}}
+        \item \skill{Will}
     \end{itemize}
 \end{multicols}
 
@@ -310,12 +342,12 @@ Here is the final skill list for this game:
 
 For character creation, we have decided to replace the skill pyramid described
 in \FateCore{} in favor of a point-based system.\footnote{This system should be
-familiar to players who have played the \emph{Dresden Files RPG}.} Characters
-start with a pool of skill points and all skills at \AdjLevel{0}. Players
-then spend skill points as described in the section Advancement and Change in
-the \FateCore{} book. In the end, skills must still be arranged in \emph{skill
-columns}, which means you may not have more skills at any given rank than you
-have at the rank below.
+familiar to players who have played the \textit{Dresden Files RPG}.} Characters
+start with a pool of skill points and all skills at \AdjLevel{0}. Players then
+spend skill points as described in the section Advancement and Change in the
+\FateCore{} book on page~255. In the end, skills must still be arranged in
+\emph{skill columns}, which means you may not have more skills at any given
+rank than you have at the rank below.
 
 The number of skill points given to new characters should be determined by the
 GM when he or she designs the campaign. The \FateCore{} book recommends 20, but
@@ -325,15 +357,15 @@ probably appropriate, based on the desired power-level.
 
 You may not choose to bank skill points received during character creation as
 you could skill points acquired at milestones. These skill points represent
-your character's past experience and training.
+a lifetime of experience and training.
 
 \begin{example}
     The GM has allotted each player 25 skill points for character creation.
-    John decides he wants to build a doctor. He knows that the Medicine skill
-    will be very important and takes that at \AdjLevel{4}. He wants to play a
-    doctor more at home in the lab than the field, so he picks Academics as a
-    second \AdjWord{4} skill. John now has 17 skill points remaining, and he
-    fills in the remaining skills as follows:
+    John decides he wants to build a doctor. He knows that the \skill{Medicine}
+    skill will be very important and takes that at \AdjLevel{4}. He wants his
+    doctor to feel more at home in the lab than the field, so he picks
+    \skill{Academics} as a second \AdjWord{4} skill. John now has 17 skill
+    points remaining, and he fills in the remaining skills as follows:
 
     \begin{center}
         \begin{tabular}{rl}
@@ -348,249 +380,427 @@ your character's past experience and training.
     \end{center}
 \end{example}
 
-\section{Academics (Lore)}\label{sec:academics}
+\subsection*{A Note About the Ladder}
 
-The Academics skill represents your character's ability to know and find
-information. Every Starfleet officer has a degree from Starfleet Academy, so
-this skill is about more than simply doing well in school. It's about your
+Ratings and die rolls in \Fate{} are rated on a ladder, given on page~9 of the
+\FateCore{} book, from \AdjLevel{-2} to \AdjLevel{8}. It's important to keep
+in mind your character's context when interpreting results. What's average for
+the man on the street is not average for a Starfleet officer. It's up to the
+players and the GM to keep this in mind when setting difficulties.
+
+For example, any old person would probably have to roll \skill{Pilot} to take a
+\Class{Constitution} starship out of spacedock without breaking something, but
+your Starfleet navigator would probably not --- unless a party of Romulan
+Warbirds were attacking the station at the time, or unless the GM compels your
+\aspect{Admirals Make Me Nervous} aspect.
+
+\section{Species Skills}\label{sec:species-skills}
+
+If your character is a species other than Human, he or she has an additional
+skill representing how in tune he or she is with his or her nature. Check out
+the chapter \nameref{chap:species} on page~\pageref{chap:species} for more
+information about this skill.
+
+\section{\skill{Academics} [\skill{Lore}]}\label{sec:academics}
+
+The \skill{Academics} skill represents your character's ability to know and
+find information. Every Starfleet officer has graduated from Starfleet Academy,
+so this skill is about more than simply doing well in school. It's about your
 characters aptitude for learning and his or her depth of knowledge in esoteric
 subjects. Since a great deal of research is done using AI these days, this is
 also the skill for programming and using computers.
 
-\subsection*{Academics Stunts}\label{subsec:academics-stunts}
+\section{\skill{Bureaucracy} [New Skill]}\label{sec:bureaucracy}
 
-\begin{itemize}
-    \item \stunt{Computer Wizard.} +2 to Academics rolls made to manipulate
-        computers.
-    \item \stunt{Technobabble.} You can use Academics in place of Deceive when
-        attempting to confuse someone with technical jargon.
-\end{itemize}
+As technology advances, sentient lifeforms find new and exciting ways to expand
+their bureaucracies. The Federation has citizens on thousands of planets, and
+Starfleet must deal with a supply chain covering over five million cubic
+parsecs. Add to that the fact that the Federation has been in existence for
+some two hundred years and you can imagine the tangled web of regulatory bodies
+that has grown.
 
-\section{Bureaucracy (New Skill)}\label{sec:bureaucracy}
-
-Bureaucracy is used to navigate the confusing world of Star Fleet regulations.
-It not only involves knowing the rules, but also who to talk to and how to do
-it.
+To navigate this labyrinth of red tape, your character uses the
+\skill{Bureaucracy} skill. This skill not only involves knowing the rules and
+regulations, but also who to talk to and how to do it. It lets your character
+get things done in organizations that feel as if they were designed to prevent
+just that.
 
 \begin{SkillActionList}
-    \SkillActionEntry{O}{Bureaucracy obstacles are about getting something done
-    in a complex organization. They are about knowing obscure by-laws or
-    regulatory minutiae, as well as the people and committees involved.}
+    \SkillActionEntry{O}{\skill{Bureaucracy} obstacles are about getting
+    something done in a complex organization. They are about knowing obscure
+    by-laws or regulatory minutiae, as well as the people and committees
+    involved.}
 
-    \SkillActionEntry{C}{A character can create an advantage using Bureaucracy
-    by using the rules to his or her advantage. An example could be citing an
-    obscure Starfleet bylaw to win an argument.}
+    \SkillActionEntry{C}{A character can create an advantage using
+    \skill{Bureaucracy} by using the rules to his or her advantage. An example
+    could be citing an obscure Starfleet bylaw to win an argument.}
 
-    \SkillActionEntry{A}{Bureaucracy is not used as an attack.}
+    \SkillActionEntry{A}{\skill{Bureaucracy} is not used as an attack.}
 
-    \SkillActionEntry{D}{You can use Bureaucracy to defend against other
-    actions dealing with the same organization. Usually these will be other
-    Bureaucracy actions, but also possibly Contacts or Resources actions.}
+    \SkillActionEntry{D}{You can use \skill{Bureaucracy} to defend against
+    other actions dealing with the same organization. Usually these will be
+    other \skill{Bureaucracy} actions, but also possibly \skill{Contacts} or
+    \skill{Resources} actions.}
 \end{SkillActionList}
 
-\subsection*{Bureaucracy Stunts}\label{subsec:bureaucracy-stunts}
+\section{\skill{Engineering} [\skill{Crafts}]}\label{sec:engineering}
 
-\begin{itemize}
-    \item \stunt{Work the System.} You may use Bureaucracy in place of Contacts
-        when dealing with a large bureaucratic organization.
-\end{itemize}
+\skill{Engineering} is your character's ability to design, build, repair, and
+otherwise work with technology. Your character does not necessarily know all
+the theory behind warp drive (that would be \skill{Academics}), but he or she
+sure as hell knows how to fix one threatening to breach.
 
-\section{Engineering (Crafts)}\label{sec:engineering}
+The \skill{Engineering} skill lets your character interact with the ship in a
+unique way. While other characters can control the ship from their posts, your
+character can get into the ship's internals and make changes or repairs. He or
+she can ``heal'' the ship in much the same way a doctor would heal a biological
+character.
 
-Engineering is your character's ability to design, build, repair, and otherwise
-work with technology. Your character does not necessarily know the theory
-behind warp drive (that would be Academics), but he or she sure knows how to
-fix one that is threatening to breach.
+\section{\skill{Medicine} [New Skill]}\label{sec:medicine}
 
-\subsection*{Engineering Stunts}\label{subsec:engineering-stunts}
-
-To be written.
-
-\section{Medicine (New Skill)}\label{sec:medicine}
+\begin{wrapfigure}{r}{0.35\linewidth}
+    \vspace{-2em}
+    \centering
+    \includegraphics[width=0.8\linewidth]{img/Medicine.eps}\\
+    \vspace{2ex}
+    \footnotesize A doctor treating a patient with a hypospray
+\end{wrapfigure}
 
 Medicine in the 23rd and 24th centuries is a lot more complicated than it used
-to be. Doctors now need to know how cells work on a sub-molecular level, as
-well as how to use all the technology in a modern sickbay --- not to mention
+to be. Doctors now need to understand how cells work on a sub-molecular level,
+as well as how to use all the technology in a modern sickbay --- not to mention
 the physiology of dozens of different species.
 
-Characters can use Medicine to heal others using the wide array of technology
-available. Things that used to take a long time to heal, such as broken bones,
-can now be corrected all but instantly. Conditions that used to be fatal are
-now unpleasant complications. This is not to say that characters are immortal,
-just that the line between minor and life-threatening injuries has shifted.
+Characters can use \skill{Medicine} to heal others using the wide array of
+technology available. Things that used to take a long time to heal, such as
+broken bones, can now be corrected all but instantly. Conditions that used to
+be fatal are now unpleasant complications. This is not to say that characters
+are immortal, just that the line between minor and life-threatening injuries
+has shifted.
 
-The Medicine skill assumes access to a modern sickbay. Working in the field is
-more difficult, with distractions abundant and equipment limited. The available
-sickbay is rated\footnote{There is no actual system in place for modifying
-Medicine actions based on the available sickbay. It is currently left up to GM
-discression.} using the adjective ladder, with a starship sickbay being Good.
-Unless otherwise noted, it is always assumed that a doctor has basic tools such
-as a medical tricorder.
+The \skill{Medicine} skill assumes access to a modern sickbay. Working in the
+field is more difficult, with distractions abundant and equipment limited. The
+available sickbay is rated\footnote{There is no actual system in place for
+modifying \skill{Medicine} actions based on the rating of the available
+sickbay. It is currently left up to GM discression.} using the adjective
+ladder, with a starship sickbay being Good. Unless otherwise noted, it is
+always assumed that a doctor has basic tools such as a medical tricorder.
 
 \begin{SkillActionList}
-    \SkillActionEntry{O}{Medicine is the skill for recovering from physical
-    consequences (such a skill does not explicitly exist in \FateCore{}). See
-    Recovering from a Consequence on page 164 of the \FateCore{} book.
-    Depending on the nature of the consequence and the available sickbay, the
-    GM may decide that the consequence should be downgraded rather than just
-    renamed. This is a judgement call. A consequence should never be downgraded
-    by more than one step.
+    \SkillActionEntry{O}{\skill{Medicine} is the skill for recovering from
+    physical consequences (such a skill does not explicitly exist in
+    \FateCore{}). See Recovering from a Consequence on page~164 of the
+    \FateCore{} book. Depending on the nature of the consequence and the
+    available sickbay, the GM may decide that the consequence should be
+    downgraded rather than just renamed. This is a judgement call. A
+    consequence should never be downgraded by more than one step.
 
-    Medicine can also be used to identify diseases and other medical
+    \skill{Medicine} can also be used to identify diseases and other medical
     conditions. Again, the GM should take into account the available sickbay
     when deciding on the level of opposition.}
 
-    \SkillActionEntry{C}{Use Medicine to practice ``preventative medicine,''
-    giving a character an aspect representing some sort of medican protection.
-    Before an away mission, a doctor may prepare a hypospray that gives the
-    aspect \aspect{Inoculated for Andorian Shingles}, or perhaps
+    \SkillActionEntry{C}{Use \skill{Medicine} to practice ``preventative
+    medicine,'' giving a character an aspect representing some sort of medican
+    protection. Before an away mission, a doctor may prepare a hypospray that
+    gives the aspect \aspect{Inoculated for Andorian Shingles}, or perhaps
     \aspect{Oxygenated Blood} if a character will have to survive in a
     high-altitude environment.}
 
-    \SkillActionEntry{A}{Medicine is not really used as an attack. The GM may
-    wish to use Medicine as an attack skill to fight some sort of sentient
-    virus, but that would be rare.}
+    \SkillActionEntry{A}{\skill{Medicine} is not really used as an attack. The
+    GM may wish to use \skill{Medicine} as an attack skill to fight some sort
+    of sentient virus, but that would be rare.}
 
-    \SkillActionEntry{D}{Similarly, Medicine is not used to defend. Medicine is
-    either used before the injury would be inflicted or after. It is difficult
-    to imagine a doctor operating on a patient \emph{while} an injury is
-    sustained.}
+    \SkillActionEntry{D}{Similarly, \skill{Medicine} is not used to defend.
+    \skill{Medicine} is either used before the injury would be inflicted or
+    after. It is difficult to imagine a doctor operating on a patient
+    \emph{while} an injury is sustained.}
 \end{SkillActionList}
 
-\subsection*{Medicine Stunts}\label{subsec:medicine-stunts}
+\section{\skill{Pilot} [\skill{Drive}]}\label{sec:pilot}
 
-\begin{itemize}
-    \item \stunt{Infection Specialist.} +2 to overcome actions with Medicine
-        when diagnosing or treating an infection.
-
-    \item \stunt{Field Medic.} If the available sickbay is Fair or lower, treat
-        it as one step higher when making Medicine rolls.
-
-    \item \stunt{Walking Tricorder.} You can use Medicine in place of Empathy
-        or Notice to assess aspects of other characters if the aspect would be
-        discovered in a medical examination.
-\end{itemize}
-
-\section{Pilot (Drive)}\label{sec:pilot}
-
-Pilot is the skill of maneuvering starships, shuttles, or any other vehicles.
-It presumes proficiency with modern astrogation technology and star maps. This
-skill subsumes the Drive skill from \FateCore{}.
+\skill{Pilot} is the skill of maneuvering starships, shuttles, or any other
+vehicles. It includes proficiency with modern astrogation technology and star
+maps. This skill subsumes the \skill{Drive} skill from \FateCore{}.
 
 \begin{SkillActionList}
-    \SkillActionEntry{O}{Use the Pilot skill to plot courses, perform
+    \SkillActionEntry{O}{Use the \skill{Pilot} skill to plot courses, perform
     maneuvers, know the locations of star systems, or anything else related to
     navigating the galaxy or controlling a ship.}
 
-    \SkillActionEntry{C}{Creating an advantage with Pilot involves flying the
-    ship in such a way to confuse enemies or gain a tactical advantage. A conn
-    officer may use Pilot to place the aspect \aspect{Hidden in a Nebula} on
-    the ship to escape detection, or perhaps the aspect \aspect{Attack Pattern
-    Delta} when entering a battle.}
+    \SkillActionEntry{C}{Creating an advantage with \skill{Pilot} involves
+    flying the ship in such a way to confuse enemies or gain a tactical
+    advantage. A conn officer may use \skill{Pilot} to place the aspect
+    \aspect{Hidden in a Nebula} on the ship to escape detection, or perhaps the
+    aspect \aspect{Attack Pattern Delta} when entering a battle.}
 
-    \SkillActionEntry{A}{Pilot, like Drive, is generally not used as an attack
-    skill. \FateCore{} suggests that one could use Drive to attack by ramming.
-    However, ramming something with a starship is very different from ramming
-    something with an automobile and likely should not be handled as a
-    conflict, but rather by placing new aspects on the scene.}
+    \SkillActionEntry{A}{\skill{Pilot}, like \skill{Drive}, is generally not
+    used as an attack skill. \FateCore{} suggests that one could use
+    \skill{Drive} to attack by ramming. However, ramming something with a
+    starship is very different from ramming something with an automobile and
+    likely should not be handled as a conflict, but rather by placing new
+    aspects on the scene.}
 
     \SkillActionEntry{D}{Evading attacking ships is the most common defensive
-    use of Pilot. Like Drive, Pilot can also be used to defend against
-    advantages being created by, or overcome actions of, other ships.}
+    use of \skill{Pilot}. Like \skill{Drive}, \skill{Pilot} can also be used to
+    defend against advantages being created by, or overcome actions of, other
+    ships.}
 \end{SkillActionList}
 
-\subsection*{Pilot Stunts}\label{subsec:pilot-stunts}
+\section{\skill{Presence} [\skill{Provoke} and \skill{Rapport}]}\label{sec:presence}
 
-\begin{itemize}
-    \item \stunt{Trick Flyer.} When you succeed with style on a defend action
-        with Pilot and choose to reduce the result by one to gain a boost, you
-        automatically perform a tricky maneuver to outrun or outflank your
-        opponent. You gain a full situation aspect with a free invocation
-        instead.
-\end{itemize}
+The \skill{Rapport} and \skill{Provoke} skills from \FateCore{} have been
+combined into a single skill called \skill{Presence}, which represents a
+character's force of personality. In our system, \skill{Presence} is roughly
+the mental analog of \skill{Fight}, while \skill{Empathy}, used to read other
+character's thoughts and emotions, is the mental analog of \skill{Notice}.
+\skill{Presence} is an active skill, used to affect other characters in some
+way.
 
-\section{Presence (Provoke and Rapport)}\label{sec:presence}
-
-The Rapport and Provoke skills from \FateCore{} have been combined into a
-single skill called Presence, which represents a character's force of
-personality. In our system, Presence is roughly the mental analog of Fight,
-while Empathy, used to read other character's thoughts and emotions, is the
-mental analog of Notice. Presence is an active skill, used to affect other
-characters in some way.
-
-There is still a certain degree of overlap between Empathy and Presence, since
-it can be difficult to move people if one cannot read them. Similarly, though,
-it is difficult to be an effective fighter if one is blind. There may be times
-when both skills are relevant to an action, though the GM may decide that one
-would face a higher level of opposition.
+There is still a certain degree of overlap between \skill{Empathy} and
+\skill{Presence}, since it can be difficult to move people if one cannot read
+them. Similarly, though, it is difficult to be an effective fighter if one is
+blind. There may be times when both skills are relevant to an action, though
+the GM may decide that one would face a higher level of opposition.
 
 \begin{SkillActionList}
-    \SkillActionEntry{O}{You can use your Presence to simply make weak-willed
-    (or unimportant) people do or think what you want, whether by charm or by
-    intimidation. As with Provoke in \FateCore{}, this will require a contest
-    against PCs or important NPCs.}
+    \SkillActionEntry{O}{You can use your \skill{Presence} to simply make
+    weak-willed (or unimportant) people do or think what you want, whether by
+    charm or by intimidation. As with \skill{Provoke} in \FateCore{}, this will
+    require a contest against PCs or important NPCs.}
 
     \SkillActionEntry{C}{To be written.}
 
-    \SkillActionEntry{A}{Presence can be used as an attack in mental combat,
-    just like the Provoke skill in \FateCore{}.}
+    \SkillActionEntry{A}{\skill{Presence} can be used as an attack in mental
+    combat, just like the \skill{Provoke} skill in \FateCore{}.}
 
-    \SkillActionEntry{D}{Having a powerful Presence does not make others'
-    mental attacks hurt any less. Will is the mental defence skill, or possibly
-    Empathy.}
+    \SkillActionEntry{D}{Having a powerful \skill{Presence} does not make
+    others' mental attacks hurt any less. \skill{Will} is the mental defence
+    skill, or possibly \skill{Empathy}.}
 \end{SkillActionList}
 
-\subsection*{Presence Stunts}\label{subsec:presence-stunts}
+\section{\skill{Survival} [New Skill]}\label{sec:survival}
 
-To be written.
-
-\section{Survival (New Skill)}\label{sec:survival}
-
-The Survival skill is about surviving in rugged conditions --- anywhere that an
-average person would not be able to live without training. It could be used to
-control one's breathing in a low-oxygen environment, set up camp for an away
-mission gone wrong, or follow tracks through wilderness.
+The \skill{Survival} skill is about surviving in rugged conditions --- anywhere
+that an average person would not be able to live without training. It could be
+used to control one's breathing in a low-oxygen environment, set up camp for an
+away mission gone wrong, or follow tracks through wilderness.
 
 \begin{SkillActionList}
     \SkillActionEntry{O}{To be written.}
 
     \SkillActionEntry{C}{To be written.}
 
-    \SkillActionEntry{A}{Survival is not generally used in conflicts.}
+    \SkillActionEntry{A}{\skill{Survival} is not generally used in conflicts.}
 
-    \SkillActionEntry{D}{Survival is not used to defend against actions.
-    Survival is about a character versus the environment.}
+    \SkillActionEntry{D}{\skill{Survival} is not used to defend against
+    actions. \skill{Survival} is about a character versus the environment.}
 \end{SkillActionList}
 
-\subsection*{Survival Stunts}\label{subsec:survival-stunts}
-
-To be written.
-
-\section{A Note about Resources}\label{sec:note-resources}
+\section{A Note about \skill{Resources}}\label{sec:note-resources}
 
 For most Federation citizens, money and wealth are relics of a sad past.
 However, not all species are so ``enlightened'', and sometimes it helps to have
 the resources on hand to trade with them. If your character has access to
-above\-/average wealth, it can be reflected in the Resources skill. However,
-any character in Starfleet with a Resources score should have a reason for it
-in his or her backstory. Also be aware that Resources is not very helpful
-unless you are in a place where money has value.
+above\-/average wealth, it can be reflected in the \skill{Resources} skill. Any
+character in Starfleet with a \skill{Resources} score should have a reason for
+it in his or her backstory. Also be aware that \skill{Resources} is not very
+helpful unless you are in a place where money has value.
+
+
+
+\chapter{Stunts and Refresh}\label{chap:stunts}
+
+\lettrine[lines=1]{O}{nce} you have an idea of your character through aspects
+and skills, you can further personalize your character through stunts. Stunts,
+like aspects, are created for your character personally, and they describe,
+essentially, how your character gets to break the rules. It's probably a good
+idea to be familiar with the sections Defining Stunts and Building Stunts
+starting on page~87 of the \FateCore{} book before reading this chapter.
+
+\section{Building a Character}\label{sec:building}
+
+Each character in \StarTrekFate{} gets three free stunts and four refresh. You
+may spend up to three of that refresh to buy additional stunts. Note that these
+numbers are different from the numbers in \FateCore{}.
+
+If your character is a species other than Human, one of his or her stunts
+\emph{must} be tied to his or her racial skill. See the \nameref{chap:species}
+chapter on page~\pageref{chap:species} for more information about species
+skills and stunts.
+
+\section{Expanding the Definition of a Stunt}\label{sec:aspect-stunts}
+
+Stunts in \FateCore{} must be tied to a particular skill, and provide bonuses
+or alternate trappings for that skill. In \StarTrekFate{}, we've decided to be
+looser about what a stunt can do. We will follow the suggestions in the section
+New Stunt Rubrics on page~34 of the \FateSystemToolkit{}. We won't reproduce
+the entire section here (ask your GM for a copy if you don't have one), but we
+will summarize the main ideas:
+
+\begin{itemize}
+    \item \textbf{Flexible Stunts} allow ``\ldots{} your stunts to be
+        skill-agnostic, or tied to multiple skills, or tied to something else
+        entirely different, like an aspect or piece of gear or a stress
+        track''.
+
+    \item \textbf{Aspected Stunts} are stunts tied to aspects:
+        \begin{quote}
+            For stunts which are tied to aspects, you might view some of their
+            effects as narrowly defined free invocations. Other aspected stunts
+            might require an invocation \ldots{} but give something extra or
+            particularly unusual when the aspect is invoked. Such effects
+            should be more potent than a ``vanilla'' invocation. You could even
+            design a stunt that triggers under particular kinds of
+            compels---just be careful you don’t end up neutering the downside
+            with the resulting benefit.
+        \end{quote}
+
+    \item \textbf{Triggered Effects} ``create stunts that trigger under a
+        specific narrative condition, require a skill roll, and have a specific
+        effect as a result.''
+\end{itemize}
+
+\noindent
+The main point is to be creative and work with your GM to come up with
+interesting stunts.
+
+\section{\skill{Academics} Stunts}\label{sec:academics-stunts}
+
+\begin{itemize}
+    \item \stunt{Computer Wizard.} +2 to \skill{Academics} rolls made to
+        manipulate computers.
+    \item \stunt{Technobabble.} You can use \skill{Academics} in place of
+        \skill{Deceive} when attempting to confuse someone with dense technical
+        jargon.
+\end{itemize}
+
+\section{\skill{Bureaucracy} Stunts}\label{sec:bureaucracy-stunts}
+
+\begin{itemize}
+    \item \stunt{Work the System.} You may use \skill{Bureaucracy} in place of
+        \skill{Contacts} when dealing with a large bureaucratic organization.
+\end{itemize}
+
+\section{\skill{Engineering} Stunts}\label{sub:engineering-stunts}
+
+To be written.
+
+\section{\skill{Medicine} Stunts}\label{sec:medicine-stunts}
+
+\begin{itemize}
+    \item \stunt{Infection Specialist.} +2 to overcome actions with
+        \skill{Medicine} when diagnosing or treating an infection.
+
+    \item \stunt{Field Medic.} If the available sickbay is Fair or lower, treat
+        it as one step higher when making \skill{Medicine} rolls.
+
+    \item \stunt{Walking Tricorder.} You can use \skill{Medicine} in place of
+        \skill{Empathy} or \skill{Notice} to assess aspects of other characters
+        if the aspect would be discovered in a medical examination.
+\end{itemize}
+
+\section{\skill{Pilot} Stunts}\label{sec:pilot-stunts}
+
+\begin{itemize}
+    \item \stunt{Trick Flyer.} When you succeed with style on a defend action
+        with \skill{Pilot} and choose to reduce the result by one to gain a
+        boost, you automatically perform a tricky maneuver to outrun or
+        outflank your opponent. You gain a full situation aspect with a free
+        invocation instead.
+\end{itemize}
+
+\section{\skill{Presence} Stunts}\label{sec:presence-stunts}
+
+To be written.
+
+\section{\skill{Survival} Stunts}\label{sec:survival-stunts}
+
+To be written.
+
+
+
+\chapter{Alien Species}\label{chap:species}
+
+\begin{center}
+    \includegraphics[width=0.4\linewidth]{img/AlienSpecies.eps}
+\end{center}
+
+\lettrine[lines=1]{W}{e} have adapted the rules for races from Professions and
+Races section on page~40 of the \FateSystemToolkit{}. Each species has a
+special skill, representing how in tune the character is with his or her
+nature. Characters with a low rating in their species skill were probably not
+raised in their species' culture, or perhaps are of mixed heratage. Characters
+with a high rating have very potent blood (if their species has blood) and are
+perfect specimens of their species.
+
+Your character may (and probably should) take stunts tied to his or her species
+skill. We give some examples of stunts below for some common species, but these
+are just suggestions. Feel free to invent your own.
+
+\section{Vulcans}\label{sec:vulcans}
+
+Characters use the \skill{Vulcan} skill to apply logic, know Vulcan history,
+and perform feats of strength.
+
+\subsection*{\skill{Vulcan} Stunts}\label{subsec:vulcan-powers}
+
+\begin{itemize}
+    \item \stunt{Mind Meld.} You can enter into a telepathic link with another
+        creature. If the subject is not willing, make an overcome action with
+        the \skill{Vulcan} skill, which the subject defends with either
+        \skill{Vulcan} or \skill{Will}. If the action fails, the meld does not
+        take place.
+
+    \item \stunt{Neck Pinch.} When you are able to touch another creature
+        (either by surprise or landing a blow), you may spend a fate point to
+        initiate a neck pinch. If you landed a physical attack, it deals no
+        stress. Instead, you make a mental attack using your \skill{Vulcan}
+        skill with a +2 bonus.
+
+    \item \stunt{Trained Mind.} Due to your strict training, you may use
+        \skill{Vulcan} instead of \skill{Will} to determine your mental stress
+        and consequences, and you get one additional mild mental consequence.
+\end{itemize}
+
+\section{Betazoids}\label{sec:betazoids}
+
+Characters use the \skill{Betazoid} skill to sense and project thoughts and
+emotions and to be familiar with Betazoid culture.
+
+\subsection*{\skill{Betazoid} Stunts}\label{subsec:betazoid-powers}
+
+\begin{itemize}
+    \item \stunt{Empathic Sense.} You may use the \skill{Betazoid} skill in
+        place of \skill{Empathy} to read others' emotions, and you get a +2
+        bonus when doing so. Your empathic senses are not hampered by most
+        physical obstructions.
+
+    \item \stunt{Telepathic Projection.} You can project your thoughts into the
+        mind of another creature, or for a fate point place a fully formed
+        thought into the subject's mind. You attempt to create an advantage
+        with the \skill{Betazoid} skill, which the subject may defend with
+        \skill{Betazoid} or \skill{Will}. If you succeed, you place an aspect
+        on the target related to the thoughts you projected.
+
+    \item \stunt{Total Awareness.} You can use \skill{Betazoid} in place of
+        \skill{Notice} to be aware of nearby sentient creatures. You get a +2
+        bonus when determining turn order, since you can sense your enemies'
+        malice.
+\end{itemize}
 
 
 
 \chapter{Starships}\label{chap:starships}
 
-\begin{figure}[H]
-    \centering
+\begin{center}
     \includegraphics[width=0.8\linewidth]{img/ConstitutionClass.eps}
-\end{figure}
+\end{center}
 
 \lettrine[lines=1]{A}{ny} captain will tell you that his or her ship is as much
 a person as any other member of the crew. Ships seem to have personalities,
-temperments, and even character flaws. A Vulcan might say this is simply the
-Human tendency to project feelings onto inanimate objects, but that does not
-stop the captain from stroking her chair arm to urge the ship on when things
-get rough.
+temperments, and even character flaws. A Vulcan might say this is simply ``the
+illogical Human tendency to project feelings onto inanimate objects'', but that
+does not stop the captain from urging the ship on when things get rough.
 
 \section{Ship Aspects}\label{sec:ship-aspects}
 
@@ -615,15 +825,15 @@ skills from the following list:
 \begin{multicols}{3}
     \raggedcolumns
     \begin{itemize}
-        \item Computer
-        \item Engine
-        \item Maneuver
-        \item Security
-        \item Sensors
-        \item Shields
-        \item Stealth
-        \item Structure
-        \item Weapons
+        \item \skill{Computers}
+        \item \skill{Engines}
+        \item \skill{Maneuver}
+        \item \skill{Security}
+        \item \skill{Sensors}
+        \item \skill{Shields}
+        \item \skill{Stealth}
+        \item \skill{Structure}
+        \item \skill{Weapons}
     \end{itemize}
 \end{multicols}
 
@@ -636,26 +846,58 @@ The GM will set the number of skill points for the ship at character creation.
 Since there are fewer skills for ships, the number should be lower than for
 player characters.
 
-There are two ways to assign skills for a ship. The GM may let the players design
-the ship from the ground up, including skills. Otherwise, the GM should let the
-players pick a ship type, then assign the points him- or herself. In the latter
-case, the GM should still keep the players involved as much as possible --- as
-always, the goal should be to have fun.
+There are two ways to assign skills for a ship. The GM may let the players
+design the ship from the ground up, including skills. Otherwise, the GM should
+let the players pick a ship type, then assign the points him- or herself. In
+the latter case, the GM should still keep the players involved as much as
+possible --- as always, the goal should be to have fun.
 
 Ship skills are rolled by the GM to see how the ship performs independently of
 whoever is controlling it. For example, the ship's sensors only reach so far,
-regardless of who is using them. To let a player character control the ship, see
-the section on \nameref{sec:control-ship} below.
+regardless of who is using them (though players can do things to help by
+gaining advantages). Since the players aren't rolling, the GM should make sure
+to keep things interesting with good description, and let the players interact
+with the ship.
+
+\begin{example}
+    The \emph{USS Concord} is in hot pursuit of an escaping Ferengi pirate
+    ship. Since there isn't a pilot in the group, the GM decides to resolve the
+    chase as an \skill{Engines} contest. The GM rolls \skill{Engines} checks
+    for both ships --- the \emph{Concord} at \AdjLevel{2} and the Ferengi ship
+    at \AdjLevel{0}. The Ferengi had previously damaged the \emph{Concord's}
+    warp drive, and the GM invokes the consequence \aspect{Fluxuating Warp
+    Field}. The \emph{Concord} rolls an \AdjLevel{1} and the Ferengi wind up
+    with a \AdjLevel{3}. The GM informs the group that the Ferengi are getting
+    away.
+
+    Mary's character Cpt. Jennings calls down to Engineering and orders them to
+    ``get the lead out''. Engineer Jim, played by Tom, responds that he's
+    ``givin' her all she's got!'', and Tom rolls \skill{Engineering} to
+    recallibrate the dilithium matrix and place the aspect \aspect{Well-Tuned
+    Engine} on the ship. On the next \skill{Engines} check, Mary invokes the
+    aspect and the GM rolls the checks. This time the \emph{Concord} gets a
+    \AdjLevel{6} and the Ferengi a \AdjLevel{-1}. The GM declares that the
+    \emph{Concord} caught back up as the Ferengi ship begins to over-heat.
+\end{example}
+
+In some cases, a player is actively controlling the ship, such as a pilot at
+the helm or a science officer using the sensors. For this case, see the
+following section on \nameref{sec:control-ship}.
 
 \section{Ship Stress Tracks and Consequences}\label{sec:ship-stress}
 
+\begin{wrapfigure}{r}{0.4\linewidth}
+    \centering
+    \includegraphics[width=0.9\linewidth]{img/Borg.eps}\\
+\end{wrapfigure}
+
 The ship's skills also determine its stress tracks. The ship has two stress
-tracks: Shield Strength (determined by the Shields skill) and Structural
-Integrity (determined by the Structure skill). Both stress tracks start with
-two boxes. If the related skill is \AdjLevel{1} or \AdjLevel{2}, add one box
-(for a total of three). If the skill is \AdjLevel{3} or higher, add two boxes
-(for a total of four). If the skill is \AdjLevel{5}, the ship also gets an
-extra mild consequence.
+tracks: Shield Strength (determined by the \skill{Shields} skill) and
+Structural Integrity (determined by the \skill{Structure} skill). Both stress
+tracks start with two boxes. If the related skill is \AdjLevel{1} or
+\AdjLevel{2}, add one box (for a total of three). If the skill is \AdjLevel{3}
+or higher, add two boxes (for a total of four). If the skill is \AdjLevel{5},
+the ship also gets an extra mild consequence.
 
 When the ship takes stress, it is marked on the two stress tracks as follows.
 If the shields are active, the stress is marked on the Shield Strength track if
@@ -665,12 +907,11 @@ stress is marked on the Structural Integrity track. If there is no available
 box on this track, the ship must either take a consequence or be taken out.
 
 Consequences for the ship reflect big hits that cause lasting damage, and the
-crew may get tossed around. When the ship takes a consequence, characters
-onboard must defend against a physical attack of a number of shifts equal to
-half the shifts of the consequence taken --- 1 shift for a mild consequence, 2
-shifts for a moderate consequence, or 3 shifts for a severe consequence.
-Athletics or Physique would be appropriate skills to defend against this
-attack.
+crew may get tossed around. When the ship takes a consequence, characters in
+affected areas must defend against a physical attack of a number of shifts
+equal to the consequence taken --- 2 shifts for a mild consequence, 4 shifts
+for a moderate consequence, or 6 shifts for a severe consequence. Athletics or
+Physique would be appropriate skills to defend against this attack.
 
 \section{Controlling the Ship}\label{sec:control-ship}
 
@@ -686,33 +927,35 @@ those of his or her character.
 
 \chapter{Technology}\label{chap:technology}
 
-\begin{figure}[H]
-    \centering
+\begin{center}
     \raisebox{1.5em}{\includegraphics[height=1.5in,width=1.5in,keepaspectratio]{img/Phaser2.eps}}
     \hspace*{1em}
     \raisebox{0em}{\includegraphics[height=1.5in,width=1.5in,keepaspectratio]{img/Communicator.eps}}
     \hspace*{1em}
     \raisebox{1em}{\includegraphics[height=1.5in,width=1.5in,keepaspectratio]{img/Tricorder.eps}}
-\end{figure}
+\end{center}
 
 \lettrine[lines=1]{T}{here} is an abundance of technology in the \StarTrek{}
 universe. Every citizen of the Federation has access to ``basic'' technology
-like replicators and subspace communicators. Starfleet makes sure its personnel
-are equipped with the latest and greatest.
+like replicators and subspace communicators, and Starfleet makes sure its
+personnel are equipped with only the latest and greatest.
 
-As much as possible, \StarTrekFate{} tries not to introduce rules for different
-pieces of technology --- not only would this be a futile effort, it would be
-completely opposed to the \Fate{} philosophy. Characters are assumed to have
-whetever equipment is required to perform their jobs.
+As much as possible, \StarTrekFate{} tries not to introduce specialized rules
+for each piece of technology --- not only would this be a futile effort, it
+would be completely opposed to the \Fate{} philosophy. Characters are assumed
+to have whetever equipment they need to perform their jobs. There are some
+sorts of technology, however, that we feel warrant some specific rules, which
+we describe in this chapter.
 
-\begin{wrapfigure}{r}{0.3\linewidth}
+\section{Phasers}\label{sec:phasers}
+
+\begin{wrapfigure}{r}{0.29\linewidth}
+    \vspace{-3em}
     \centering
     \includegraphics[width=0.8\linewidth]{img/Phaser.eps}\\
     \vspace{2ex}
     \footnotesize A type-2 hand phaser, ca.\ 2260
 \end{wrapfigure}
-
-\section{Phasers}\label{sec:phasers}
 
 The standard directed energy weapon of the 23rd and 24th centuries is the
 phaser. A phaser fires a nadion particle beam and is as useful a tool as it is
@@ -725,15 +968,12 @@ Firing a phaser (unsurprisingly) uses the \skill{Shoot} skill. Phasers have a
 multitude of settings, variously described by levels or fractions. Settings are
 not described consistently in the various \StarTrek{} shows, so use whatever
 description feels right --- as far as this game is concerned, the two modes are
-\emph{stun} and \emph{kill}. In stun mode, a character may defend with either
-\skill{Athletics} (by dodging and diving) or \skill{Will} (resisting the
-stunning effect by force of will). In kill mode, only \skill{Athletics} can be
-used to defend. A phaser's setting should be reflected in the types of
-consequences taken and the conditions for being taken out by a hit.
-
-
-
-\chapter{Species}\label{chap:species}
+\emph{stun} and \emph{kill}. In stun mode, the defending character may choose
+to treat the attack as either physical or mental and defend appropriately
+(e.g., \skill{Athletics} to dodge and dive, or \skill{Will} to resist the
+stunning effect). In kill mode, the attack is only ever physical. Any
+consequences taken should reflect the phaser's setting, as should the
+conditions for being taken out by a hit.
 
 \end{document}
 
