@@ -1,4 +1,4 @@
-TEX_DEPS := tex/copyright.tex tex/prelude.tex
+TEX_DEPS := tex/copyright.tex tex/prelude.tex tex/common.tex
 
 IMAGE_DEPS := $(shell find img -type f)
 
@@ -8,7 +8,7 @@ LATEXMK_OPTS := -xelatex -g
 
 .PHONY : all clean
 
-all : Our_Setting.pdf Star_Trek_Fate.pdf
+all : Our_Setting.pdf Star_Trek_Fate.pdf Character_Sheet.pdf
 
 $(OUTPUT_DIR) : Makefile
 	mkdir -p $(OUTPUT_DIR)

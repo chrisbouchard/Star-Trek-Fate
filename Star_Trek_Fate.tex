@@ -2,11 +2,13 @@
 \documentclass[12pt,titlepage,openany]{book}
 
 \input{tex/prelude.tex}
+\input{tex/common.tex}
 
 \title{\StarTrekFate{}}
 \author{Chris Bouchard}
 \date{\yyyymmdddate\today}
 
+\frontmatter
 \pagenumbering{gobble}
 
 \begin{document}
@@ -32,18 +34,22 @@
     \end{tabular}
 \end{titlepage}
 
-\cleardoublepage
+\blankpage
+
+\pagenumbering{roman}
 
 \begin{center}
     \parbox{0.85\linewidth}{\input{tex/copyright.tex}}
 \end{center}
-\cleardoublepage
+
+\blankpage
+
 
 \pdfbookmark{Contents}{Contents}
 \tableofcontents
 \cleardoublepage
 
-\pagenumbering{arabic}
+\mainmatter
 
 
 
@@ -122,9 +128,9 @@ is perfect. The Federation is is still made up of people --- Humans, Vulcans,
 Tellarites, and a multitude of other species, but still people. Poverty may be
 a thing of the past, but politics can be as ugly and underhanded as ever.
 Racism among Humans is considered old-fashioned, but the man on the street
-probably has a thing or two to say about ``those Klingons''. The point is that
-\StarTrek{} is always \emph{hopeful}. Of course things are not perfect, but
-they can be fixed.
+probably has a thing or two to say about those ``blood-thirsty Klingons''. The
+point is that \StarTrek{} is always \emph{hopeful}. Of course things are not
+perfect, but they can be fixed.
 
 \section{Starfleet}
 
@@ -185,10 +191,16 @@ character creation.)}
 
 \vspace{1em}
 
-Starfleet officers and personnel give and obey orders on a daily basis. When
-one character wishes to give an order to another, there are several ways the GM
-can choose to resolve the situation depending on the situation and the
-characters involved.
+\begin{wrapfigure}{l}{0.4\linewidth}
+    \vspace{1ex}
+    \centering
+    \includegraphics[width=0.8\linewidth]{img/PicardChair.eps}\\
+\end{wrapfigure}
+
+Starfleet personnel give and receive orders on a daily basis. When one
+character wishes to give an order to another, there are several ways the GM can
+choose to resolve the situation depending on the situation and the characters
+involved.
 
 For most orders from a superior to a subordinate, no special action will be
 needed. This is Starfleet, and your character is a trained professional.
@@ -425,23 +437,29 @@ regulations, but also who to talk to and how to do it. It lets your character
 get things done in organizations that feel as if they were designed to prevent
 just that.
 
-\begin{SkillActionList}
-    \SkillActionEntry{O}{\skill{Bureaucracy} obstacles are about getting
-    something done in a complex organization. They are about knowing obscure
-    by-laws or regulatory minutiae, as well as the people and committees
-    involved.}
+\vspace{1ex}
 
-    \SkillActionEntry{C}{A character can create an advantage using
-    \skill{Bureaucracy} by using the rules to his or her advantage. An example
-    could be citing an obscure Starfleet bylaw to win an argument.}
+\begin{NewSkillAction}{O}
+    \skill{Bureaucracy} obstacles are about getting something done in a complex
+    organization. They are about knowing obscure by-laws or regulatory
+    minutiae, as well as the people and committees involved.
+\end{NewSkillAction}
 
-    \SkillActionEntry{A}{\skill{Bureaucracy} is not used as an attack.}
+\begin{NewSkillAction}{A}
+    A character can create an advantage using \skill{Bureaucracy} by using the
+    rules to his or her advantage. An example could be citing an obscure
+    Starfleet bylaw to win an argument.
+\end{NewSkillAction}
 
-    \SkillActionEntry{D}{You can use \skill{Bureaucracy} to defend against
-    other actions dealing with the same organization. Usually these will be
-    other \skill{Bureaucracy} actions, but also possibly \skill{Contacts} or
-    \skill{Resources} actions.}
-\end{SkillActionList}
+\begin{NewSkillAction}[+]{A}
+    \skill{Bureaucracy} is not used as an attack.
+\end{NewSkillAction}
+
+\begin{NewSkillAction}{D}
+    You can use \skill{Bureaucracy} to defend against other actions dealing
+    with the same organization. Usually these will be other \skill{Bureaucracy}
+    actions, but also possibly \skill{Contacts} or \skill{Resources} actions.
+\end{NewSkillAction}
 
 \section{\skill{Engineering} [\skill{Crafts}]}\label{sec:engineering}
 
@@ -462,8 +480,6 @@ character.
     \vspace{-2em}
     \centering
     \includegraphics[width=0.8\linewidth]{img/Medicine.eps}\\
-    \vspace{2ex}
-    \footnotesize A doctor treating a patient with a hypospray
 \end{wrapfigure}
 
 Medicine in the 23rd and 24th centuries is a lot more complicated than it used
@@ -486,35 +502,42 @@ sickbay. It is currently left up to GM discression.} using the adjective
 ladder, with a starship sickbay being Good. Unless otherwise noted, it is
 always assumed that a doctor has basic tools such as a medical tricorder.
 
-\begin{SkillActionList}
-    \SkillActionEntry{O}{\skill{Medicine} is the skill for recovering from
-    physical consequences (such a skill does not explicitly exist in
-    \FateCore{}). See Recovering from a Consequence on page~164 of the
-    \FateCore{} book. Depending on the nature of the consequence and the
-    available sickbay, the GM may decide that the consequence should be
-    downgraded rather than just renamed. This is a judgement call. A
-    consequence should never be downgraded by more than one step.
+\vspace{1ex}
+
+\begin{NewSkillAction}{O}
+    \skill{Medicine} is the skill for recovering from physical consequences
+    (such a skill does not explicitly exist in \FateCore{}). See Recovering
+    from a Consequence on page~164 of the \FateCore{} book. Depending on the
+    nature of the consequence and the available sickbay, the GM may decide that
+    the consequence should be downgraded rather than just renamed. This is a
+    judgement call. A consequence should never be downgraded by more than one
+    step.
 
     \skill{Medicine} can also be used to identify diseases and other medical
     conditions. Again, the GM should take into account the available sickbay
-    when deciding on the level of opposition.}
+    when deciding on the level of opposition.
+\end{NewSkillAction}
 
-    \SkillActionEntry{C}{Use \skill{Medicine} to practice ``preventative
-    medicine,'' giving a character an aspect representing some sort of medican
-    protection. Before an away mission, a doctor may prepare a hypospray that
-    gives the aspect \aspect{Inoculated for Andorian Shingles}, or perhaps
-    \aspect{Oxygenated Blood} if a character will have to survive in a
-    high-altitude environment.}
+\begin{NewSkillAction}{C}
+    Use \skill{Medicine} to practice ``preventative medicine,'' giving a
+    character an aspect representing some sort of medican protection. Before an
+    away mission, a doctor may prepare a hypospray that gives the aspect
+    \aspect{Inoculated for Andorian Shingles}, or perhaps \aspect{Oxygenated
+    Blood} if a character will have to survive in a high-altitude environment.
+\end{NewSkillAction}
 
-    \SkillActionEntry{A}{\skill{Medicine} is not really used as an attack. The
-    GM may wish to use \skill{Medicine} as an attack skill to fight some sort
-    of sentient virus, but that would be rare.}
+\begin{NewSkillAction}{A}
+    \skill{Medicine} is not really used as an attack. The GM may wish to use
+    \skill{Medicine} as an attack skill to fight some sort of sentient virus,
+    but that would be rare.
+\end{NewSkillAction}
 
-    \SkillActionEntry{D}{Similarly, \skill{Medicine} is not used to defend.
-    \skill{Medicine} is either used before the injury would be inflicted or
-    after. It is difficult to imagine a doctor operating on a patient
-    \emph{while} an injury is sustained.}
-\end{SkillActionList}
+\begin{NewSkillAction}{D}
+    Similarly, \skill{Medicine} is not used to defend. \skill{Medicine} is
+    either used before the injury would be inflicted or after. It is difficult
+    to imagine a doctor operating on a patient \emph{while} an injury is
+    sustained.
+\end{NewSkillAction}
 
 \section{\skill{Pilot} [\skill{Drive}]}\label{sec:pilot}
 
@@ -522,29 +545,35 @@ always assumed that a doctor has basic tools such as a medical tricorder.
 vehicles. It includes proficiency with modern astrogation technology and star
 maps. This skill subsumes the \skill{Drive} skill from \FateCore{}.
 
-\begin{SkillActionList}
-    \SkillActionEntry{O}{Use the \skill{Pilot} skill to plot courses, perform
-    maneuvers, know the locations of star systems, or anything else related to
-    navigating the galaxy or controlling a ship.}
+\vspace{1ex}
 
-    \SkillActionEntry{C}{Creating an advantage with \skill{Pilot} involves
-    flying the ship in such a way to confuse enemies or gain a tactical
-    advantage. A conn officer may use \skill{Pilot} to place the aspect
-    \aspect{Hidden in a Nebula} on the ship to escape detection, or perhaps the
-    aspect \aspect{Attack Pattern Delta} when entering a battle.}
+\begin{NewSkillAction}{O}
+    Use the \skill{Pilot} skill to plot courses, perform maneuvers, know the
+    locations of star systems, or anything else related to navigating the
+    galaxy or controlling a ship.
+\end{NewSkillAction}
 
-    \SkillActionEntry{A}{\skill{Pilot}, like \skill{Drive}, is generally not
-    used as an attack skill. \FateCore{} suggests that one could use
-    \skill{Drive} to attack by ramming. However, ramming something with a
-    starship is very different from ramming something with an automobile and
-    likely should not be handled as a conflict, but rather by placing new
-    aspects on the scene.}
+\begin{NewSkillAction}{C}
+    Creating an advantage with \skill{Pilot} involves flying the ship in such a
+    way to confuse enemies or gain a tactical advantage. A conn officer may use
+    \skill{Pilot} to place the aspect \aspect{Hidden in a Nebula} on the ship
+    to escape detection, or perhaps the aspect \aspect{Attack Pattern Delta}
+    when entering a battle.
+\end{NewSkillAction}
 
-    \SkillActionEntry{D}{Evading attacking ships is the most common defensive
-    use of \skill{Pilot}. Like \skill{Drive}, \skill{Pilot} can also be used to
-    defend against advantages being created by, or overcome actions of, other
-    ships.}
-\end{SkillActionList}
+\begin{NewSkillAction}{A}
+    \skill{Pilot}, like \skill{Drive}, is generally not used as an attack
+    skill. \FateCore{} suggests that one could use \skill{Drive} to attack by
+    ramming. However, ramming something with a starship is very different from
+    ramming something with an automobile and likely should not be handled as a
+    conflict, but rather by placing new aspects on the scene.
+\end{NewSkillAction}
+
+\begin{NewSkillAction}{D}
+    Evading attacking ships is the most common defensive use of \skill{Pilot}.
+    Like \skill{Drive}, \skill{Pilot} can also be used to defend against
+    advantages being created by, or overcome actions of, other ships.
+\end{NewSkillAction}
 
 \section{\skill{Presence} [\skill{Provoke} and \skill{Rapport}]}\label{sec:presence}
 
@@ -562,21 +591,29 @@ them. Similarly, though, it is difficult to be an effective fighter if one is
 blind. There may be times when both skills are relevant to an action, though
 the GM may decide that one would face a higher level of opposition.
 
-\begin{SkillActionList}
-    \SkillActionEntry{O}{You can use your \skill{Presence} to simply make
-    weak-willed (or unimportant) people do or think what you want, whether by
-    charm or by intimidation. As with \skill{Provoke} in \FateCore{}, this will
-    require a contest against PCs or important NPCs.}
+\vspace{1ex}
 
-    \SkillActionEntry{C}{To be written.}
+\begin{NewSkillAction}{O}
+    You can use your \skill{Presence} to simply make weak-willed (or
+    unimportant) people do or think what you want, whether by charm or by
+    intimidation. As with \skill{Provoke} in \FateCore{}, this will require a
+    contest against PCs or important NPCs.
+\end{NewSkillAction}
 
-    \SkillActionEntry{A}{\skill{Presence} can be used as an attack in mental
-    combat, just like the \skill{Provoke} skill in \FateCore{}.}
+\begin{NewSkillAction}[+]{C}
+    To be written.
+\end{NewSkillAction}
 
-    \SkillActionEntry{D}{Having a powerful \skill{Presence} does not make
-    others' mental attacks hurt any less. \skill{Will} is the mental defence
-    skill, or possibly \skill{Empathy}.}
-\end{SkillActionList}
+\begin{NewSkillAction}{A}
+    \skill{Presence} can be used as an attack in mental combat, just like the
+    \skill{Provoke} skill in \FateCore{}.
+\end{NewSkillAction}
+
+\begin{NewSkillAction}{D}
+    Having a powerful \skill{Presence} does not make others' mental attacks
+    hurt any less. \skill{Will} is the mental defence skill, or possibly
+    \skill{Empathy}.
+\end{NewSkillAction}
 
 \section{\skill{Survival} [New Skill]}\label{sec:survival}
 
@@ -585,16 +622,24 @@ that an average person would not be able to live without training. It could be
 used to control one's breathing in a low-oxygen environment, set up camp for an
 away mission gone wrong, or follow tracks through wilderness.
 
-\begin{SkillActionList}
-    \SkillActionEntry{O}{To be written.}
+\vspace{1ex}
 
-    \SkillActionEntry{C}{To be written.}
+\begin{NewSkillAction}[+]{O}
+    To be written.
+\end{NewSkillAction}
 
-    \SkillActionEntry{A}{\skill{Survival} is not generally used in conflicts.}
+\begin{NewSkillAction}[+]{C}
+    To be written.
+\end{NewSkillAction}
 
-    \SkillActionEntry{D}{\skill{Survival} is not used to defend against
-    actions. \skill{Survival} is about a character versus the environment.}
-\end{SkillActionList}
+\begin{NewSkillAction}[+]{A}
+    \skill{Survival} is not generally used in conflicts.
+\end{NewSkillAction}
+
+\begin{NewSkillAction}{D}
+    \skill{Survival} is not used to defend against actions. \skill{Survival} is
+    about a character versus the environment.
+\end{NewSkillAction}
 
 \section{A Note about \skill{Resources}}\label{sec:note-resources}
 
@@ -612,21 +657,22 @@ helpful unless you are in a place where money has value.
 
 \lettrine[lines=1]{O}{nce} you have an idea of your character through aspects
 and skills, you can further personalize your character through stunts. Stunts,
-like aspects, are created for your character personally, and they describe,
-essentially, how your character gets to break the rules. It's probably a good
-idea to be familiar with the sections Defining Stunts and Building Stunts
-starting on page~87 of the \FateCore{} book before reading this chapter.
+like aspects, are created for your character personally. They describe your
+character's way of doing things and, essentially, how he or she gets to break
+the rules. It's probably a good idea to be familiar with the sections Defining
+Stunts and Building Stunts starting on page~87 of the \FateCore{} book before
+reading this chapter.
 
 \section{Building a Character}\label{sec:building}
 
-Each character in \StarTrekFate{} gets three free stunts and four refresh. You
-may spend up to three of that refresh to buy additional stunts. Note that these
-numbers are different from the numbers in \FateCore{}.
+Each character in \StarTrekFate{} gets \textbf{three} free stunts and
+\textbf{three} refresh. You may spend up to two of that refresh to buy
+additional stunts.
 
-If your character is a species other than Human, one of his or her stunts
-\emph{must} be tied to his or her racial skill. See the \nameref{chap:species}
-chapter on page~\pageref{chap:species} for more information about species
-skills and stunts.
+If your character is a species other than Human, he or she may get a bonus free
+stunt. Thist stunt \emph{must} be tied to his or her racial skill. See the
+\nameref{chap:species} chapter on page~\pageref{chap:species} for more
+information about species skills and stunts.
 
 \section{Expanding the Definition of a Stunt}\label{sec:aspect-stunts}
 
@@ -664,7 +710,11 @@ will summarize the main ideas:
 The main point is to be creative and work with your GM to come up with
 interesting stunts.
 
-\section{\skill{Academics} Stunts}\label{sec:academics-stunts}
+\section{New Skill Stunts}\label{sec:skill-stunts}
+
+For skills that have been added or renamed, here are some example stunts.
+
+\subsection*{\skill{Academics} Stunts}\label{subsec:academics-stunts}
 
 \begin{itemize}
     \item \stunt{Computer Wizard.} +2 to \skill{Academics} rolls made to
@@ -674,18 +724,18 @@ interesting stunts.
         jargon.
 \end{itemize}
 
-\section{\skill{Bureaucracy} Stunts}\label{sec:bureaucracy-stunts}
+\subsection*{\skill{Bureaucracy} Stunts}\label{subsec:bureaucracy-stunts}
 
 \begin{itemize}
     \item \stunt{Work the System.} You may use \skill{Bureaucracy} in place of
         \skill{Contacts} when dealing with a large bureaucratic organization.
 \end{itemize}
 
-\section{\skill{Engineering} Stunts}\label{sub:engineering-stunts}
+\subsection*{\skill{Engineering} Stunts}\label{subsec:engineering-stunts}
 
 To be written.
 
-\section{\skill{Medicine} Stunts}\label{sec:medicine-stunts}
+\subsection*{\skill{Medicine} Stunts}\label{subsec:medicine-stunts}
 
 \begin{itemize}
     \item \stunt{Infection Specialist.} +2 to overcome actions with
@@ -699,7 +749,7 @@ To be written.
         if the aspect would be discovered in a medical examination.
 \end{itemize}
 
-\section{\skill{Pilot} Stunts}\label{sec:pilot-stunts}
+\subsection*{\skill{Pilot} Stunts}\label{subsec:pilot-stunts}
 
 \begin{itemize}
     \item \stunt{Trick Flyer.} When you succeed with style on a defend action
@@ -709,11 +759,11 @@ To be written.
         invocation instead.
 \end{itemize}
 
-\section{\skill{Presence} Stunts}\label{sec:presence-stunts}
+\subsection*{\skill{Presence} Stunts}\label{subsec:presence-stunts}
 
 To be written.
 
-\section{\skill{Survival} Stunts}\label{sec:survival-stunts}
+\subsection*{\skill{Survival} Stunts}\label{subsec:survival-stunts}
 
 To be written.
 
@@ -733,9 +783,13 @@ raised in their species' culture, or perhaps are of mixed heratage. Characters
 with a high rating have very potent blood (if their species has blood) and are
 perfect specimens of their species.
 
-Your character may (and probably should) take stunts tied to his or her species
+When your character has a species skill at rank \AdjLevel{1} or better, he or
+she gets a bonus free stunt. This stunt must be tied to the species skill. You
+may of course tie additional stunts to species skills, as you would any other
 skill. We give some examples of stunts below for some common species, but these
-are just suggestions. Feel free to invent your own.
+are just suggestions. Feel free to invent your own. Check out the
+\nameref{chap:stunts} chapter on page~\pageref{chap:stunts} for more
+information about stunts.
 
 \section{Vulcans}\label{sec:vulcans}
 
@@ -953,8 +1007,6 @@ we describe in this chapter.
     \vspace{-3em}
     \centering
     \includegraphics[width=0.8\linewidth]{img/Phaser.eps}\\
-    \vspace{2ex}
-    \footnotesize A type-2 hand phaser, ca.\ 2260
 \end{wrapfigure}
 
 The standard directed energy weapon of the 23rd and 24th centuries is the
@@ -974,6 +1026,27 @@ to treat the attack as either physical or mental and defend appropriately
 stunning effect). In kill mode, the attack is only ever physical. Any
 consequences taken should reflect the phaser's setting, as should the
 conditions for being taken out by a hit.
+
+\chapter{Test}
+
+\begin{NewSkillAction}{O}
+    \lipsum[1]
+
+    \lipsum[2]
+\end{NewSkillAction}
+
+\begin{NewSkillAction}{C}
+    This is a long line that will, with any luck, wrap onto another line so we
+    can test how this works with a slightly longer paragraph.
+\end{NewSkillAction}
+
+\begin{NewSkillAction}[+]{A}
+    This is a test!
+\end{NewSkillAction}
+
+\begin{NewSkillAction}[+]{D}
+    This is a test!
+\end{NewSkillAction}
 
 \end{document}
 

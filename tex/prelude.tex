@@ -21,9 +21,10 @@
 \usepackage[sectionbib,sort,numbers]{natbib}
 \usepackage[shortlabels]{enumitem}
 \usepackage{float}
-\usepackage{wrapfig}
 \usepackage{lettrine}
 \usepackage{titlesec}
+\usepackage[strict]{changepage}
+\usepackage{lipsum}
 
 \newfontfamily\startrek{Star Trek Enterprise Future}
 \newfontfamily\fatefont{Fate Core Glyphs}
@@ -55,7 +56,7 @@
 \titlespacing*{\section}{0pt}{*6}{*2}
 \titlespacing*{\subsection}{0pt}{*4}{*1}
 
-\renewcommand{\dateseparator}{-}
+\renewcommand{\dateseparator}{.}
 
 \newdateformat{mydate}{%
     \ifshowdow\dayofweekname{\THEDAY}{\THEMONTH}{\THEYEAR}\fi
@@ -68,56 +69,23 @@
 }
 \makeatother
 
-\newcommand{\Fate}{\textit{Fate}}
-\newcommand{\FateCore}{\textit{\Fate{} Core}}
-\newcommand{\FateSystemToolkit}{\textit{\Fate{} System Toolkit}}
-\newcommand{\StarTrek}{\textit{Star Trek}}
-\newcommand{\StarTrekFate}{\textit{\StarTrek{}:\ \Fate{}}}
-
-\newcommand{\skill}[1]{#1}
-\newcommand{\aspect}[1]{\textbf{\textit{#1}}}
-\newcommand{\stunt}[1]{\textbf{#1}}
-
-\newcommand{\Ship}[1]{\textit{#1}}
-
-\newcommand{\Class}[1]{\Ship{#1}\-/class}
-
 \newenvironment{example}[0]{%
     \begin{quotation}\noindent\itshape\textbf{Example:}%
 }{%
     \end{quotation}%
 }
 
-\newcommand{\AdjWord}[1]{%
-    \ifnumequal{#1}{-2}{Terrible}{}%
-    \ifnumequal{#1}{-1}{Poor}{}%
-    \ifnumequal{#1}{0}{Mediocre}{}%
-    \ifnumequal{#1}{1}{Average}{}%
-    \ifnumequal{#1}{2}{Fair}{}%
-    \ifnumequal{#1}{3}{Good}{}%
-    \ifnumequal{#1}{4}{Great}{}%
-    \ifnumequal{#1}{5}{Superb}{}%
-    \ifnumequal{#1}{6}{Fantastic}{}%
-    \ifnumequal{#1}{7}{Epic}{}%
-    \ifnumequal{#1}{8}{Legendary}{}%
+\NewEnviron{NewSkillAction}[2][]{%
+    \begin{adjustwidth}{40pt}{}%
+       \makebox[0pt][r]{\raisebox{-10pt}[0pt][0pt]{%
+           \fontsize{25pt}{0pt}\selectfont\SkillActionIcon{#2}%
+           \hspace{5pt}%
+       }}%
+       \textbf{\SkillActionName{#2}:} \BODY%
+    \end{adjustwidth}%
+    \ifstrequal{#1}{+}{\vspace{\baselineskip}}{}%
+    \vspace{1ex}%
 }
-
-\newcommand{\SignedNumber}[1]{%
-    \ifnumcomp{#1}{>}{-1}{+}{}#1%
-}
-
-\newcommand{\AdjLevel}[1]{%
-    \AdjWord{#1} (\SignedNumber{#1})%
-}
-
-\newcommand{\SkillActionName}[1]{%
-    \ifstrequal{#1}{O}{Overcome}{}%
-    \ifstrequal{#1}{C}{Create an Advantage}{}%
-    \ifstrequal{#1}{A}{Attack}{}%
-    \ifstrequal{#1}{D}{Defend}{}%
-}
-
-\newcommand{\SkillActionIcon}[1]{{\fatefont{}{#1}}}
 
 \newlength{\currentparindent}
 \NewEnviron{SkillActionList}{%

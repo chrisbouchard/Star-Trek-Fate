@@ -1,0 +1,463 @@
+\documentclass[12pt]{report}
+
+\usepackage{fixltx2e}
+\usepackage[xetex]{graphicx}
+\usepackage{xltxtra}
+\usepackage[letterpaper, margin=1in]{geometry}
+\usepackage{layout}
+\usepackage{calc}
+\usepackage{etoolbox}
+\usepackage[shortcuts]{extdash}
+\usepackage{environ}
+\usepackage{tikz}
+
+\usetikzlibrary{calc}
+
+\input{tex/common.tex}
+
+\setmainfont{Swiss911 UCm BT}
+\setlength\parindent{0pt}
+\pagestyle{empty}
+
+\newlength\GridStep
+\setlength\GridStep{4pt}
+
+\newlength\SidebarWidth
+\setlength\SidebarWidth{12\GridStep}
+
+\newlength\RowHeight
+\setlength\RowHeight{7\GridStep}
+
+\newlength\InsetWidth
+\setlength\InsetWidth{\GridStep}
+
+\newlength\OneColumnWidth
+\setlength\OneColumnWidth{\textwidth - 2\InsetWidth}
+
+\newlength\TwoColumnWidth
+\setlength\TwoColumnWidth{\textwidth / 2 - \GridStep - \InsetWidth}
+
+\newlength\TwoColumnOffset
+\setlength\TwoColumnOffset{\TwoColumnWidth + 2\GridStep}
+
+\newlength\SkillSectionHeight
+\setlength\SkillSectionHeight{3\GridStep + 13\RowHeight + 2pt}
+
+\newlength\SequenceXOffset
+\newlength\SequenceYOffset
+\newif\ifSequenceFirst
+\pgfqkeys{/Sequence}{
+    item/.store in=\Item,
+    item/.value required,
+    item step/.estore in=\ItemStep,
+    item step/.value required,
+    labels/.estore in=\Labels,
+    labels/.value required,
+    axis/.value required,
+    axis/.is choice,
+    axis/x/.estore in=\Axis,
+    axis/x/.default=x,
+    axis/y/.estore in=\Axis,
+    axis/y/.default=y,
+    .code={
+        \begin{scope}
+            \pgfqkeys{/Sequence}{axis=x, #1}
+
+            \SequenceXOffset=0pt
+            \SequenceYOffset=0pt
+            \booltrue{SequenceFirst}
+
+            \def\iffirst{\ifbool{SequenceFirst}}
+
+            \foreach \LABEL in \Labels {%
+                \begin{scope}[shift={(\SequenceXOffset, -\SequenceYOffset)}]%
+                    \Item%
+                \end{scope}%
+                \ifdefstring{\Axis}{x}{%
+                    \global\advance \SequenceXOffset by \ItemStep%
+                }{}%
+                \ifdefstring{\Axis}{y}{%
+                    \global\advance \SequenceYOffset by \ItemStep%
+                }{}%
+                \global\boolfalse{SequenceFirst}
+            }
+        \end{scope}
+    }
+}
+
+\pgfqkeys{/PageHeader}{
+    height/.estore in=\Height,
+    height/.value required,
+    width/.estore in=\Width,
+    width/.value required,
+    padding/.estore in=\Padding,
+    padding/.value required,
+    label/.estore in=\Label,
+    label/.value required,
+    .code={
+        \begin{scope}[x=\GridStep, y=\GridStep]
+            \pgfqkeys{/PageHeader}{height=0.75in, width=\textwidth,
+                padding={5\GridStep}, #1
+            }
+
+            \edef\ContentHeight{(\Height - (\Padding))}
+
+            \node[anchor=north west, inner sep=0pt] at (\InsetWidth, 0)
+                {\resizebox{!}{\ContentHeight}{\startrek \StarTrekFate{}}};
+
+            \node[anchor=north east, inner sep=0pt] at (\Width - \InsetWidth, 0)
+                {\includegraphics[height=\ContentHeight]{img/FateLightBW.pdf}};
+
+            \begin{scope}[yshift={-1 * (\Height)}]
+                \ifdef{\Label}{
+                    \pgfkeys{/HeaderBar={width=\Width, label=\Label}}
+                }{
+                    \pgfkeys{/HeaderBar={width=\Width}}
+                }
+            \end{scope}
+        \end{scope}
+    }
+}
+
+\pgfqkeys{/PageFooter}{
+    width/.estore in=\Width,
+    width/.value required,
+    label/.estore in=\Label,
+    label/.value required,
+    .code={
+        \begin{scope}[x=\GridStep, y=\GridStep]
+            \pgfqkeys{/PageFooter}{width=\textwidth, #1}
+
+            \begin{scope}[yshift={-\textheight + 7\GridStep}]
+                \ifdef{\Label}{
+                    \pgfkeys{/HeaderBar={width=\Width, label=\Label}}
+                }{
+                    \pgfkeys{/HeaderBar={width=\Width}}
+                }
+
+                \node[anchor=north west, inner sep=0] at (\InsetWidth, -5.5\GridStep)
+                    {\resizebox{!}{\GridStep}{%
+                        \libertine\copyright\ 2013--\the\year\ Chris Bouchard.
+                        This work is licensed under a Creative Commons
+                        Attribution\-/NonCommercial license.%
+                    }};
+            \end{scope}
+        \end{scope}
+    }
+}
+
+\pgfqkeys{/HeaderBar}{
+    width/.estore in=\Width,
+    width/.value required,
+    label/.estore in=\Label,
+    label/.value required,
+    .code={
+        \begin{scope}[x=\GridStep, y=\GridStep]
+            \pgfqkeys{/HeaderBar}{width=\textwidth, #1}
+
+            \fill (2, -4)
+                arc[radius=2, start angle=270, end angle=90]
+                -- ++(\Width - 4\GridStep, 0)
+                arc[radius=2, start angle=90, end angle=-90]
+                -- cycle;
+
+            \ifdef{\Label}{
+                \node[rectangle, fill=white, draw=white, line width=1pt,
+                        text=black, anchor=north west, inner xsep=\GridStep,
+                        inner ysep=0]
+                    at (4, 1pt) {\resizebox{!}{4\GridStep}{\Label}};
+            }{}
+        \end{scope}
+    }
+}
+
+\newif\ifSectionBoxFlip
+\pgfqkeys{/SectionBox}{
+    width/.estore in=\Width,
+    width/.value required,
+    height/.estore in=\Height,
+    height/.value required,
+    flip/.estore in=\Flip,
+    flip/.default=true,
+    label/.estore in=\Label,
+    label/.value required,
+    sidebar labels/.estore in=\SidebarLabels,
+    sidebar labels/.value required,
+    .code={
+        \begin{scope}[x=\GridStep, y=\GridStep]
+            \pgfqkeys{/SectionBox}{flip=false, #1}
+
+            \setbool{SectionBoxFlip}{\Flip}%
+
+            \def\FlipScale{\ifbool{SectionBoxFlip}{-1}{1}}
+            \def\FlipShift{\ifbool{SectionBoxFlip}{-\Height}{0}}
+            \def\FlipLabelShift{\ifbool{SectionBoxFlip}{3\GridStep}{0}}
+            \def\FlipSidebarShift{\ifbool{SectionBoxFlip}{0}{-5\GridStep}}
+            \def\FlipSidebarLabelShift{\ifbool{SectionBoxFlip}{0}{1.5\GridStep}}
+
+            \begin{scope}[yshift=\FlipShift]
+                \begin{scope}[yscale=\FlipScale]
+                    \fill (0, -5)
+                        -- ++(0, 1)
+                        arc[x radius=6, y radius=4, start angle=180, end angle=90]
+                        -- ++(\Width - 7.5\GridStep, 0)
+                        arc[radius=1.5, start angle=90, end angle=-90]
+                        -- ++(-\Width + \SidebarWidth + 4.5\GridStep, 0)
+                        arc[x radius=3, y radius=2, start angle=90, end angle=180]
+                        -- ++(0, -1pt)
+                        -- ++(-\SidebarWidth, 0)
+                        -- cycle;
+                \end{scope}
+
+                \ifdef{\Label}{
+                    \begin{scope}[xshift=\Width, yshift=\FlipLabelShift]
+                        \node[rectangle, fill=white, text=black, anchor=north east,
+                                inner xsep=0.75\GridStep, inner ysep=1pt]
+                            at (-4, 2pt) {\resizebox{!}{3\GridStep}{\Label}};
+                    \end{scope}
+                }{}
+            \end{scope}
+
+            \edef\SidebarHeight{\Height + 5\GridStep}
+
+            \begin{scope}[yshift=\FlipSidebarShift]
+                \ifdef{\SidebarLabels}{
+                    \pgfkeys{/SectionSidebar={
+                        height=\SidebarHeight,
+                        labels=\SidebarLabels,
+                        label shift=\FlipSidebarLabelShift
+                    }}
+                }{
+                    \pgfkeys{/SectionSidebar={
+                        height=\SidebarHeight,
+                        label shift=\FlipSidebarLabelShift
+                    }}
+                }
+            \end{scope}
+        \end{scope}
+    }
+}
+
+\pgfqkeys{/SectionSidebar}{
+    height/.estore in=\Height,
+    height/.value required,
+    labels/.estore in=\Labels,
+    labels/.value required,
+    label shift/.estore in=\LabelShift,
+    label shift/.value required,
+    .code={
+        \begin{scope}[x=\GridStep, y=\GridStep]
+            \pgfqkeys{/SectionSidebar}{labels={}, label shift=0, #1}
+
+            \fill (0, 0) rectangle ++(\SidebarWidth, -\Height);
+
+            \ifdef{\Labels}{
+                \begin{scope}[yshift=\LabelShift]
+                    \pgfkeys{/Sequence={
+                        labels={\Labels},
+                        axis=y,
+                        item step=\RowHeight,
+                        item={
+                            \ifdefempty{\LABEL}{}{
+                                \iffirst{}{
+                                    \draw[color=white, line width=2pt]
+                                        (-1pt, 0) -- ++(\SidebarWidth + 2pt, 0);
+                                }
+                                \node[text=white, anchor=north east,
+                                        inner xsep=1.5\GridStep, inner ysep=0]
+                                    at (\SidebarWidth, -2)
+                                    {\resizebox{!}{2\GridStep}{\LABEL}};
+                            }
+                        }
+                    }}
+                \end{scope}
+            }{}
+        \end{scope}
+    }
+}
+
+\pgfqkeys{/SectionShading}{
+    height/.estore in=\Height,
+    height/.value required,
+    width/.estore in=\Width,
+    width/.value required,
+    rows/.estore in=\Rows,
+    rows/.value required,
+    color/.estore in=\Color,
+    color/.value required,
+    opacity/.estore in=\Opacity,
+    opacity/.value required,
+    .code={
+        \begin{scope}[x=\GridStep, y=\GridStep]
+            \pgfqkeys{/SectionShading}{color=black, opacity=0.125, rows=1, #1}
+
+            \edef\FillWidth{\Width - \SidebarWidth - 4pt}
+            \edef\FillHeight{{\ifdef{\Height}{\Height}{\Rows * \RowHeight} + 2pt}}
+
+            \fill[color=\Color, opacity=\Opacity]
+                (\SidebarWidth + 2pt, -1pt) rectangle ++(\FillWidth, -\FillHeight);
+        \end{scope}
+    }
+}
+
+\pgfqkeys{/Bubble}{
+    height/.store in=\Height,
+    height/.value required,
+    radius/.store in=\Radius,
+    radius/.value required,
+    space/.store in=\Space,
+    space/.value required,
+    label/.store in=\Label,
+    label/.value required,
+    .code={
+        \begin{scope}[x=\GridStep, y=\GridStep]
+            \pgfqkeys{/Bubble}{height=6, radius=6, space=10, #1}
+
+            \fill (0, -\Radius)
+                arc[radius=\Radius, start angle=180, end angle=0]
+                -- ++($-1*(0, \Height) + 2*(0, \Radius)$)
+                arc[radius=\Radius, start angle=0, end angle=-180]
+                -- cycle;
+            \fill[color=white] ($-1/2*(0, \Height) + 1/2*(0, \Space) - (1pt, 0) - 1/2*(0, \GridStep)$)
+                -- ++($2*(\Radius, 0) + (2pt, 0)$)
+                -- ++($-1*(0, \Space)$)
+                -- ++($-2*(\Radius, 0) - (2pt, 0)$)
+                -- cycle;
+
+            \ifdef{\Label}{
+                \node[text=white, anchor=south, inner ysep=2\GridStep]
+                    at ($-1/2*(0, \Height) + 1/2*(0, \Space) + (\Radius, 0) - 1/2*(0, \GridStep)$)
+                    {\resizebox{!}{2\GridStep}{\Label}};
+            }{}
+        \end{scope}
+    }
+}
+
+\pgfqkeys{/StressBox}{
+    .code={
+        \begin{scope}[x=\GridStep, y=\GridStep]
+            \fill (1.5, 0)
+                -- ++(5, 0)
+                arc[radius=1.5, start angle=90, end angle=-90]
+                -- ++(-5, 0)
+                arc[radius=1.5, start angle=270, end angle=90]
+                -- cycle;
+
+            \fill[color=white] (2, 1pt)
+                -- ++(2.5, 0)
+                -- ++($(0, -4) + (0, -2pt)$)
+                -- ++(-2.5, 0)
+                -- cycle;
+
+            \node[text=white, anchor=west] at (4.5, -1.5) {\resizebox{!}{1.5\GridStep}{#1}};
+        \end{scope}
+    }
+}
+
+\begin{document}
+
+\begin{tikzpicture}
+    \pgfkeys{/PageHeader={label={STARFLEET PERSONNEL RECORD}}}
+    \pgfkeys{/PageFooter}
+
+    \begin{scope}[yshift={-0.75in}]
+        \begin{scope}[yshift=-6\GridStep]
+            \begin{scope}[xshift=\InsetWidth]
+                \pgfkeys{/SectionBox={
+                    flip=true, width=\TwoColumnWidth, height=3.25in,
+                    sidebar labels={NAME,CONCEPT,TROUBLE,RANK,ASPECTS}
+                }}
+
+                \node[anchor=north west, inner sep=0, opacity=0.125]
+                    at (\SidebarWidth + 2\GridStep, -0.25in)
+                    {\includegraphics[width={\TwoColumnWidth - \SidebarWidth - 4\GridStep}]%
+                        {img/Federation.eps}%
+                    };
+
+                \begin{scope}[xshift=\TwoColumnOffset]
+                    \pgfkeys{/SectionBox={
+                        width=\TwoColumnWidth, height=\SkillSectionHeight, label={SKILLS},
+                        sidebar labels={+5,+4,+3,+2,+1,,STUNTS}
+                    }}
+
+                    \begin{scope}[yshift=-3.5\GridStep]
+                        \begin{scope}[yshift=-\RowHeight]
+                            \pgfkeys{/SectionShading={width=\TwoColumnWidth}}
+                        \end{scope}
+
+                        \begin{scope}[yshift=-3\RowHeight]
+                            \pgfkeys{/SectionShading={width=\TwoColumnWidth}}
+                        \end{scope}
+
+                        \begin{scope}[yshift=-6\RowHeight]
+                            \pgfkeys{/Sequence={
+                                labels={1,2,3,4},
+                                axis=y,
+                                item step=2\RowHeight,
+                                item={\pgfkeys{/SectionShading={width=\TwoColumnWidth}}}
+                            }}
+                        \end{scope}
+                    \end{scope}
+                \end{scope}
+
+                \begin{scope}[shift={(\TwoColumnWidth / 2 - 21\GridStep, -3.25in - 3\GridStep)}]
+                    \pgfkeys{/Sequence={
+                        labels={REFRESH,SKILL POINTS,SKILL CAP},
+                        item step=14\GridStep,
+                        item={\pgfkeys{/Bubble={height=1.625in, label=\LABEL}}}
+                    }}
+                \end{scope}
+            \end{scope}
+
+            \begin{scope}[yshift={-\SkillSectionHeight - 2\GridStep}]
+                \pgfkeys{/HeaderBar={label={STRESS AND CONSEQUENCES}}}
+
+                \begin{scope}[xshift=\InsetWidth]
+                    \begin{scope}[yshift=-6\GridStep]
+                        \pgfkeys{/SectionSidebar={
+                            height=28\GridStep, labels={PHYSICAL,MENTAL}
+                        }}
+
+                        \begin{scope}[shift={(2\GridStep + \SidebarWidth, -1.5\GridStep)}]
+                            \pgfkeys{/Sequence={
+                                labels={1,2,3,4},
+                                item step=10\GridStep,
+                                item={\pgfkeys{/StressBox=\LABEL}}
+                            }}
+                        \end{scope}
+
+                        \begin{scope}[shift={(2\GridStep + \SidebarWidth, -1.5\GridStep - \RowHeight)}]
+                            \pgfkeys{/Sequence={
+                                labels={1,2,3,4},
+                                item step=10\GridStep,
+                                item={\pgfkeys{/StressBox=\LABEL}}
+                            }}
+                        \end{scope}
+
+                        \begin{scope}[xshift=\TwoColumnOffset]
+                            \pgfkeys{/SectionSidebar={
+                                height=28\GridStep, labels={MILD,,MODERATE,SEVERE}
+                            }}
+                        \end{scope}
+                    \end{scope}
+                \end{scope}
+            \end{scope}
+        \end{scope}
+    \end{scope}
+\end{tikzpicture}
+
+\clearpage
+
+\begin{tikzpicture}
+    \pgfkeys{/PageHeader={label={NOTES AND EXTRAS}}}
+    \pgfkeys{/PageFooter}
+
+    \begin{scope}[yshift={-0.75in}]
+        \begin{scope}[xshift=\InsetWidth]
+            %TODO: Put stuff here
+        \end{scope}
+    \end{scope}
+\end{tikzpicture}
+
+\end{document}
+
