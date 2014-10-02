@@ -1,0 +1,74 @@
+\setmainfont[Ligatures={Common,TeX}, Numbers={Proportional}]{Linux Libertine O}
+\setmonofont[Scale=0.9]{Luxi Mono}
+
+\urlstyle{same}
+
+\titleformat{\chapter}[display]%
+    {\fontsize{0.65in}{0.4in}\selectfont\startrek}%
+    {\chaptertitlename~\thechapter}%
+    {15pt}%
+    {\fontsize{0.75in}{0.4in}\selectfont\startrek}
+
+\titleformat{\section}[hang]%
+    {\fontsize{0.4in}{0.3in}\selectfont\startrek}%
+    {\thesection}%
+    {20pt}%
+    {\fontsize{0.4in}{0.3in}\selectfont\startrek}
+
+\titleformat{\subsection}[hang]%
+    {\fontsize{0.3in}{0.2in}\selectfont\startrek}%
+    {\thesubsection}%
+    {15pt}%
+    {\fontsize{0.3in}{0.2in}\selectfont\startrek}
+
+\titlespacing*{\section}{0pt}{*6}{*2}
+\titlespacing*{\subsection}{0pt}{*4}{*1}
+
+\widowpenalty=1000
+\clubpenalty=1000
+
+\renewcommand{\dateseparator}{.}
+
+\newdateformat{mydate}{%
+    \ifshowdow\dayofweekname{\THEDAY}{\THEMONTH}{\THEYEAR}\fi
+    \THEDAY{} \monthname[\THEMONTH{}] \THEYEAR{}%
+}
+
+\makeatletter
+\long\def\@makefntext#1{%
+    \parindent 1em\noindent\hb@xt@ 1.8em{\hss\@makefnmark}~#1%
+}
+\makeatother
+
+\newenvironment{example}[0]{%
+    \begin{quotation}\noindent\itshape\textbf{Example:}%
+}{%
+    \end{quotation}%
+}
+
+\NewEnviron{NewSkillAction}[2][]{%
+    \begin{adjustwidth}{40pt}{}%
+       \makebox[0pt][r]{\raisebox{-10pt}[0pt][0pt]{%
+           \fontsize{25pt}{0pt}\selectfont\SkillActionIcon{#2}%
+           \hspace{5pt}%
+       }}%
+       \textbf{\SkillActionName{#2}:} \BODY%
+    \end{adjustwidth}%
+    \ifstrequal{#1}{+}{\vspace{\baselineskip}}{}%
+    \vspace{1ex}%
+}
+
+\newlength{\SkillBoxWidth}
+\setlength{\SkillBoxWidth}{6.2em}
+\newcommand{\SkillBox}[1]{%
+\framebox{\parbox[c][1em][c]{\SkillBoxWidth}{\centering\upshape\handwritingfont#1}}%
+    \hspace{3pt}%
+}
+
+\newcommand{\blankpage}{%
+    \newpage%
+    \thispagestyle{empty}%
+    \mbox{}%
+    \newpage%
+}
+

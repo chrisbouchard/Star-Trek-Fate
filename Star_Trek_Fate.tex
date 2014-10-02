@@ -3,6 +3,7 @@
 
 \input{tex/prelude.tex}
 \input{tex/common.tex}
+\input{tex/setup.tex}
 
 \title{\StarTrekFate{}}
 \author{Chris Bouchard}
@@ -65,15 +66,15 @@
 \vspace{1em}
 
 \noindent
-\lettrine[lines=1]{W}{elcome} to \StarTrekFate{}, an adaptation of the
-\FateCore{} system for the \StarTrek{} universe.
+Welcome to \StarTrekFate{}, an adaptation of the \FateCore{} system for the
+\StarTrek{} universe.
 
-\section{What You Need to Play}
-
+\section{What You Need to Play}\label{sec:to-play}
 We assume that you have access to the \FateCore{} book, EHP0001 \textit{Fate
-Core System}. This document simply describes the new rules and rules changes we
-have made and clarifies some interactions. We will refer to page numbers in the
-2013 hard-cover printing.
+Core System}.\footnote{\textit{Fate Core System}:
+\url{http://www.evilhat.com/home/fate-core-downloads/}} This document simply
+describes the new rules and rules changes we have made and clarifies some
+interactions. We will refer to page numbers in the 2013 hard-cover edition.
 
 In addition to the materials described in the section What You Need to Play on
 page~3 of the \FateCore{} book, we also recommend that you have access to
@@ -86,10 +87,9 @@ We occasionally make references to the \FateSystemToolkit{}, EHP0005. This book
 is not required for play, but we have cherry-picked a few rules from the
 toolkit and adapted them to our setting. When we do, we provide a reference to
 this book for additional details. We will refer to page numbers in the 2013
-eBook printing.
+eBook edition.
 
-\section{Play Style}
-
+\section{Play Style}\label{sec:play-style}
 The \FateCore{} system is designed for collaborative storytelling, and we
 strongly encourage that in \StarTrekFate{}. We have not worked out rules
 systems for every creature or piece of tech in Federation space. Rather, we
@@ -110,14 +110,13 @@ important (which is why this document exists), but after all the fun of
     stars.''\\ --- Captain James T. Kirk, 2269}
 \end{center}
 
-\noindent \lettrine[lines=1]{T}{he} assumed setting for \StarTrekFate{} is the
-United Federation of Planets, or at least somewhere within the Alpha Quadrant.
-This is the part of the galaxy explored in the majority of the \StarTrek{}
-franchise. Your characters are likely Federation citizens, and if not they are
-very familiar with it.
+\noindent The assumed setting for \StarTrekFate{} is the United Federation of
+Planets, or at least somewhere within the Alpha Quadrant. This is the part of
+the galaxy explored in the majority of the \StarTrek{} franchise. Your
+characters are likely Federation citizens, and if not they are very familiar
+with it.
 
-\section{Living in the Federation}
-
+\section{Living in the Federation}\label{sec:living-federation}
 The big thing to remember about the Federation is that it is a utopian society.
 It was founded on the principles of universal liberty, rights, and equality. In
 this setting, things like poverty, huger, racism, and even currency have been
@@ -132,8 +131,7 @@ probably has a thing or two to say about those ``blood-thirsty Klingons''. The
 point is that \StarTrek{} is always \emph{hopeful}. Of course things are not
 perfect, but they can be fixed.
 
-\section{Starfleet}
-
+\section{Starfleet}\label{sec:starfleet}
 The main focus of \StarTrek{} has always been Starfleet, and this game is no
 different. Starfleet is the deep-space exploratory and defense service of the
 Federation, and it captures all the ideals of Federation society.
@@ -153,8 +151,7 @@ way up from the rank of Ensign. However, in times of conflict, or when contact
 with Starfleet is not possible for extended periods, a temporary commission
 could appoint persons to other ranks.
 
-\section{Rank and Title}\label{sec:orders}
-
+\section{Rank and Title}\label{sec:rank-and-title}
 Different versions of \StarTrek{} have not consistently used the same ranks.
 For this setting, we will be using the following set, listed from lowest rank
 to highest:
@@ -224,15 +221,13 @@ for one character to command another.
 
 \chapter{Aspects}\label{chap:aspects}
 
-\lettrine[lines=1]{T}{he} \FateCore{} system uses aspects to help give
-characters individuality and personality. In \StarTrekFate{}, will modify this
-system slightly, adding an extra aspect and imposing some requirements. This
-will reflect how big of a commitment being in Starfleet is for your character,
-and how much it has shaped his or her life. This chapter details these
-requirements.
+The \FateCore{} system uses aspects to help give characters individuality and
+personality. In \StarTrekFate{}, will modify this system slightly, adding an
+extra aspect and imposing some requirements. This will reflect how big of a
+commitment being in Starfleet is for your character, and how much it has shaped
+his or her life. This chapter details these requirements.
 
 \section{High Concept}\label{sec:high-concept}
-
 Joining Starfleet is a major, life-changing decision. Thus, it should be
 reflected in your character's high concept. For example, a chief engineer could
 have the high concept \aspect{Starfleet Gearhead}. Of course, if your character
@@ -241,7 +236,6 @@ some other organization may fill this role for your character, such as a Vulcan
 scientist with the high concept \aspect{Researcher of the Science Academy}.
 
 \section{Species Aspect}\label{sec:species}
-
 Your character's species is definitely a defining characteristic. The story of
 \StarTrek{} is told from the Humans' perspective, so for better or for worse
 that is the ``default'' species. A player may choose another species with GM
@@ -255,7 +249,6 @@ Chosing a different species has additional requirements. See the chapter
 \nameref{chap:species} on page~\pageref{chap:species} for more information.
 
 \section{Rank Aspect}\label{sec:rank}
-
 A character's position in Starfleet is a defining characteristic --- remember,
 your character has devoted his or her life to joining and advancing within Star
 Fleet. Your character has an extra aspect representing his or her rank. You may
@@ -271,7 +264,6 @@ Romulan with the aspect \aspect{Centurion} or a Vulcan with the aspect
 organization, your character should have the aspect \aspect{Civilian}.
 
 \section{Aspects and Orders}\label{sec:aspects-orders}
-
 Giving and obeying orders is part and parcel of having a rank, and thus it is
 core to your Starfleet character. An order starts simply as two characters
 talking. When a captain gives an order to an ensign, for example, this does not
@@ -307,14 +299,14 @@ unacceptable.
 
 \chapter{Skills}\label{chap:skills}
 
-\lettrine[lines=1]{I}{n} \Fate{}, skills describe your character's abilities.
-Every action you take in the game will be based on a skill, and each skill
-covers a broad area of competency. It's a good idea to be familiar with the
-section Defining Skills on page~86 of the \FateCore{} book, as well as the
-default skill descriptions starting on page~96, before reading this chapter. As
-much as possible, skills work the same in \StarTrekFate{} as they do in
-\FateCore{}. However, the setting of \StarTrek{} is different enough that we
-felt some changes were required.
+In \Fate{}, skills describe your character's abilities. Every action you take
+in the game will be based on a skill, and each skill covers a broad area of
+competency. It's a good idea to be familiar with the section Defining Skills on
+page~86 of the \FateCore{} book, as well as the default skill descriptions
+starting on page~96, before reading this chapter. As much as possible, skills
+work the same in \StarTrekFate{} as they do in \FateCore{}. However, the
+setting of \StarTrek{} is different enough that we felt some changes were
+required.
 
 We decided to change the way skills are chosen at character creation. Some
 skills have been combined into new, broader skills; some skills have been
@@ -351,7 +343,6 @@ not described in \FateCore{} (i.e., renamed or new skills) have been bolded.
 \end{multicols}
 
 \section{Skill Points}\label{sec:skill-points}
-
 For character creation, we have decided to replace the skill pyramid described
 in \FateCore{} in favor of a point-based system.\footnote{This system should be
 familiar to players who have played the \textit{Dresden Files RPG}.} Characters
@@ -393,7 +384,6 @@ a lifetime of experience and training.
 \end{example}
 
 \subsection*{A Note About the Ladder}
-
 Ratings and die rolls in \Fate{} are rated on a ladder, given on page~9 of the
 \FateCore{} book, from \AdjLevel{-2} to \AdjLevel{8}. It's important to keep
 in mind your character's context when interpreting results. What's average for
@@ -407,14 +397,12 @@ Warbirds were attacking the station at the time, or unless the GM compels your
 \aspect{Admirals Make Me Nervous} aspect.
 
 \section{Species Skills}\label{sec:species-skills}
-
 If your character is a species other than Human, he or she has an additional
 skill representing how in tune he or she is with his or her nature. Check out
 the chapter \nameref{chap:species} on page~\pageref{chap:species} for more
 information about this skill.
 
 \section{\skill{Academics} [\skill{Lore}]}\label{sec:academics}
-
 The \skill{Academics} skill represents your character's ability to know and
 find information. Every Starfleet officer has graduated from Starfleet Academy,
 so this skill is about more than simply doing well in school. It's about your
@@ -423,7 +411,6 @@ subjects. Since a great deal of research is done using AI these days, this is
 also the skill for programming and using computers.
 
 \section{\skill{Bureaucracy} [New Skill]}\label{sec:bureaucracy}
-
 As technology advances, sentient lifeforms find new and exciting ways to expand
 their bureaucracies. The Federation has citizens on thousands of planets, and
 Starfleet must deal with a supply chain covering over five million cubic
@@ -462,7 +449,6 @@ just that.
 \end{NewSkillAction}
 
 \section{\skill{Engineering} [\skill{Crafts}]}\label{sec:engineering}
-
 \skill{Engineering} is your character's ability to design, build, repair, and
 otherwise work with technology. Your character does not necessarily know all
 the theory behind warp drive (that would be \skill{Academics}), but he or she
@@ -475,17 +461,15 @@ she can ``heal'' the ship in much the same way a doctor would heal a biological
 character.
 
 \section{\skill{Medicine} [New Skill]}\label{sec:medicine}
-
-\begin{wrapfigure}{r}{0.35\linewidth}
-    \vspace{-2em}
-    \centering
-    \includegraphics[width=0.8\linewidth]{img/Medicine.eps}\\
-\end{wrapfigure}
-
 Medicine in the 23rd and 24th centuries is a lot more complicated than it used
 to be. Doctors now need to understand how cells work on a sub-molecular level,
 as well as how to use all the technology in a modern sickbay --- not to mention
 the physiology of dozens of different species.
+
+\begin{wrapfigure}{r}{0.35\linewidth}
+    \centering
+    \includegraphics[width=0.8\linewidth]{img/Medicine.eps}\\
+\end{wrapfigure}
 
 Characters can use \skill{Medicine} to heal others using the wide array of
 technology available. Things that used to take a long time to heal, such as
@@ -540,7 +524,6 @@ always assumed that a doctor has basic tools such as a medical tricorder.
 \end{NewSkillAction}
 
 \section{\skill{Pilot} [\skill{Drive}]}\label{sec:pilot}
-
 \skill{Pilot} is the skill of maneuvering starships, shuttles, or any other
 vehicles. It includes proficiency with modern astrogation technology and star
 maps. This skill subsumes the \skill{Drive} skill from \FateCore{}.
@@ -576,7 +559,6 @@ maps. This skill subsumes the \skill{Drive} skill from \FateCore{}.
 \end{NewSkillAction}
 
 \section{\skill{Presence} [\skill{Provoke} and \skill{Rapport}]}\label{sec:presence}
-
 The \skill{Rapport} and \skill{Provoke} skills from \FateCore{} have been
 combined into a single skill called \skill{Presence}, which represents a
 character's force of personality. In our system, \skill{Presence} is roughly
@@ -601,7 +583,7 @@ the GM may decide that one would face a higher level of opposition.
 \end{NewSkillAction}
 
 \begin{NewSkillAction}[+]{C}
-    To be written.
+    \TBW
 \end{NewSkillAction}
 
 \begin{NewSkillAction}{A}
@@ -616,7 +598,6 @@ the GM may decide that one would face a higher level of opposition.
 \end{NewSkillAction}
 
 \section{\skill{Survival} [New Skill]}\label{sec:survival}
-
 The \skill{Survival} skill is about surviving in rugged conditions --- anywhere
 that an average person would not be able to live without training. It could be
 used to control one's breathing in a low-oxygen environment, set up camp for an
@@ -625,11 +606,11 @@ away mission gone wrong, or follow tracks through wilderness.
 \vspace{1ex}
 
 \begin{NewSkillAction}[+]{O}
-    To be written.
+    \TBW
 \end{NewSkillAction}
 
 \begin{NewSkillAction}[+]{C}
-    To be written.
+    \TBW
 \end{NewSkillAction}
 
 \begin{NewSkillAction}[+]{A}
@@ -642,7 +623,6 @@ away mission gone wrong, or follow tracks through wilderness.
 \end{NewSkillAction}
 
 \section{A Note about \skill{Resources}}\label{sec:note-resources}
-
 For most Federation citizens, money and wealth are relics of a sad past.
 However, not all species are so ``enlightened'', and sometimes it helps to have
 the resources on hand to trade with them. If your character has access to
@@ -655,16 +635,15 @@ helpful unless you are in a place where money has value.
 
 \chapter{Stunts and Refresh}\label{chap:stunts}
 
-\lettrine[lines=1]{O}{nce} you have an idea of your character through aspects
-and skills, you can further personalize your character through stunts. Stunts,
-like aspects, are created for your character personally. They describe your
-character's way of doing things and, essentially, how he or she gets to break
-the rules. It's probably a good idea to be familiar with the sections Defining
-Stunts and Building Stunts starting on page~87 of the \FateCore{} book before
-reading this chapter.
+Once you have an idea of your character through aspects and skills, you can
+further personalize your character through stunts. Stunts, like aspects, are
+created for your character personally. They describe your character's way of
+doing things and, essentially, how he or she gets to break the rules. It's
+probably a good idea to be familiar with the sections Defining Stunts and
+Building Stunts starting on page~87 of the \FateCore{} book before reading this
+chapter.
 
 \section{Building a Character}\label{sec:building}
-
 Each character in \StarTrekFate{} gets \textbf{three} free stunts and
 \textbf{three} refresh. You may spend up to two of that refresh to buy
 additional stunts.
@@ -675,7 +654,6 @@ stunt. Thist stunt \emph{must} be tied to his or her racial skill. See the
 information about species skills and stunts.
 
 \section{Expanding the Definition of a Stunt}\label{sec:aspect-stunts}
-
 Stunts in \FateCore{} must be tied to a particular skill, and provide bonuses
 or alternate trappings for that skill. In \StarTrekFate{}, we've decided to be
 looser about what a stunt can do. We will follow the suggestions in the section
@@ -684,10 +662,9 @@ the entire section here (ask your GM for a copy if you don't have one), but we
 will summarize the main ideas:
 
 \begin{itemize}
-    \item \textbf{Flexible Stunts} allow ``\ldots{} your stunts to be
-        skill-agnostic, or tied to multiple skills, or tied to something else
-        entirely different, like an aspect or piece of gear or a stress
-        track''.
+    \item \textbf{Flexible Stunts} allow stunts to be ``skill-agnostic, or tied
+        to multiple skills, or tied to something else entirely different, like
+        an aspect or piece of gear or a stress track''.
 
     \item \textbf{Aspected Stunts} are stunts tied to aspects:
         \begin{quote}
@@ -711,11 +688,9 @@ The main point is to be creative and work with your GM to come up with
 interesting stunts.
 
 \section{New Skill Stunts}\label{sec:skill-stunts}
-
 For skills that have been added or renamed, here are some example stunts.
 
 \subsection*{\skill{Academics} Stunts}\label{subsec:academics-stunts}
-
 \begin{itemize}
     \item \stunt{Computer Wizard.} +2 to \skill{Academics} rolls made to
         manipulate computers.
@@ -725,18 +700,15 @@ For skills that have been added or renamed, here are some example stunts.
 \end{itemize}
 
 \subsection*{\skill{Bureaucracy} Stunts}\label{subsec:bureaucracy-stunts}
-
 \begin{itemize}
     \item \stunt{Work the System.} You may use \skill{Bureaucracy} in place of
         \skill{Contacts} when dealing with a large bureaucratic organization.
 \end{itemize}
 
 \subsection*{\skill{Engineering} Stunts}\label{subsec:engineering-stunts}
-
-To be written.
+\TBW
 
 \subsection*{\skill{Medicine} Stunts}\label{subsec:medicine-stunts}
-
 \begin{itemize}
     \item \stunt{Infection Specialist.} +2 to overcome actions with
         \skill{Medicine} when diagnosing or treating an infection.
@@ -750,7 +722,6 @@ To be written.
 \end{itemize}
 
 \subsection*{\skill{Pilot} Stunts}\label{subsec:pilot-stunts}
-
 \begin{itemize}
     \item \stunt{Trick Flyer.} When you succeed with style on a defend action
         with \skill{Pilot} and choose to reduce the result by one to gain a
@@ -760,12 +731,10 @@ To be written.
 \end{itemize}
 
 \subsection*{\skill{Presence} Stunts}\label{subsec:presence-stunts}
-
-To be written.
+\TBW
 
 \subsection*{\skill{Survival} Stunts}\label{subsec:survival-stunts}
-
-To be written.
+\TBW
 
 
 
@@ -775,13 +744,14 @@ To be written.
     \includegraphics[width=0.4\linewidth]{img/AlienSpecies.eps}
 \end{center}
 
-\lettrine[lines=1]{W}{e} have adapted the rules for races from Professions and
-Races section on page~40 of the \FateSystemToolkit{}. Each species has a
-special skill, representing how in tune the character is with his or her
-nature. Characters with a low rating in their species skill were probably not
-raised in their species' culture, or perhaps are of mixed heratage. Characters
-with a high rating have very potent blood (if their species has blood) and are
-perfect specimens of their species.
+\noindent
+We have adapted the rules for races from Professions and Races section on
+page~40 of the \FateSystemToolkit{}. Each species has a special skill,
+representing how in tune the character is with his or her nature. Characters
+with a low rating in their species skill were probably not raised in their
+species' culture, or perhaps are of mixed heratage. Characters with a high
+rating have very potent blood (if their species has blood) and are perfect
+specimens of their species.
 
 When your character has a species skill at rank \AdjLevel{1} or better, he or
 she gets a bonus free stunt. This stunt must be tied to the species skill. You
@@ -792,12 +762,10 @@ are just suggestions. Feel free to invent your own. Check out the
 information about stunts.
 
 \section{Vulcans}\label{sec:vulcans}
-
 Characters use the \skill{Vulcan} skill to apply logic, know Vulcan history,
 and perform feats of strength.
 
 \subsection*{\skill{Vulcan} Stunts}\label{subsec:vulcan-powers}
-
 \begin{itemize}
     \item \stunt{Mind Meld.} You can enter into a telepathic link with another
         creature. If the subject is not willing, make an overcome action with
@@ -817,12 +785,10 @@ and perform feats of strength.
 \end{itemize}
 
 \section{Betazoids}\label{sec:betazoids}
-
 Characters use the \skill{Betazoid} skill to sense and project thoughts and
 emotions and to be familiar with Betazoid culture.
 
 \subsection*{\skill{Betazoid} Stunts}\label{subsec:betazoid-powers}
-
 \begin{itemize}
     \item \stunt{Empathic Sense.} You may use the \skill{Betazoid} skill in
         place of \skill{Empathy} to read others' emotions, and you get a +2
@@ -850,14 +816,14 @@ emotions and to be familiar with Betazoid culture.
     \includegraphics[width=0.8\linewidth]{img/ConstitutionClass.eps}
 \end{center}
 
-\lettrine[lines=1]{A}{ny} captain will tell you that his or her ship is as much
-a person as any other member of the crew. Ships seem to have personalities,
-temperments, and even character flaws. A Vulcan might say this is simply ``the
-illogical Human tendency to project feelings onto inanimate objects'', but that
-does not stop the captain from urging the ship on when things get rough.
+\noindent
+Any captain will tell you that his or her ship is as much a person as any other
+member of the crew. Ships seem to have personalities, temperments, and even
+character flaws. A Vulcan might say this is simply ``the illogical Human
+tendency to project feelings onto inanimate objects'', but that does not stop
+the captain from urging the ship on when things get rough.
 
 \section{Ship Aspects}\label{sec:ship-aspects}
-
 The ship has aspects just like any other character, but there are some
 differences. The ship does not have fate points, so its aspects cannot be
 \emph{directly} invoked or compelled. Instead, its aspects are treated as
@@ -871,7 +837,6 @@ as a whole may gain aspects as a result of combat or plot, like a corridor
 gaining the aspect \aspect{Pitch Black} when the power goes out.
 
 \section{Ship Skills}\label{sec:ship-skills}
-
 Just like player characters, not all ships are the same. Some are fast, some
 have impressive firepower, and some have cloaking devices. Your ship will have
 skills from the following list:
@@ -939,7 +904,6 @@ the helm or a science officer using the sensors. For this case, see the
 following section on \nameref{sec:control-ship}.
 
 \section{Ship Stress Tracks and Consequences}\label{sec:ship-stress}
-
 \begin{wrapfigure}{r}{0.4\linewidth}
     \centering
     \includegraphics[width=0.9\linewidth]{img/Borg.eps}\\
@@ -968,7 +932,6 @@ for a moderate consequence, or 6 shifts for a severe consequence. Athletics or
 Physique would be appropriate skills to defend against this attack.
 
 \section{Controlling the Ship}\label{sec:control-ship}
-
 While the ship is sometimes treated as a character, it is still controlled by
 its crew. Players may take actions that control the ship, such as a conn
 officer changing course or an engineer repairing the warp engines. When
@@ -989,10 +952,11 @@ those of his or her character.
     \raisebox{1em}{\includegraphics[height=1.5in,width=1.5in,keepaspectratio]{img/Tricorder.eps}}
 \end{center}
 
-\lettrine[lines=1]{T}{here} is an abundance of technology in the \StarTrek{}
-universe. Every citizen of the Federation has access to ``basic'' technology
-like replicators and subspace communicators, and Starfleet makes sure its
-personnel are equipped with only the latest and greatest.
+\noindent
+There is an abundance of technology in the \StarTrek{} universe. Every citizen
+of the Federation has access to ``basic'' technology like replicators and
+subspace communicators, and Starfleet makes sure its personnel are equipped
+with only the latest and greatest.
 
 As much as possible, \StarTrekFate{} tries not to introduce specialized rules
 for each piece of technology --- not only would this be a futile effort, it
@@ -1002,7 +966,6 @@ sorts of technology, however, that we feel warrant some specific rules, which
 we describe in this chapter.
 
 \section{Phasers}\label{sec:phasers}
-
 \begin{wrapfigure}{r}{0.29\linewidth}
     \vspace{-3em}
     \centering
@@ -1026,27 +989,6 @@ to treat the attack as either physical or mental and defend appropriately
 stunning effect). In kill mode, the attack is only ever physical. Any
 consequences taken should reflect the phaser's setting, as should the
 conditions for being taken out by a hit.
-
-\chapter{Test}
-
-\begin{NewSkillAction}{O}
-    \lipsum[1]
-
-    \lipsum[2]
-\end{NewSkillAction}
-
-\begin{NewSkillAction}{C}
-    This is a long line that will, with any luck, wrap onto another line so we
-    can test how this works with a slightly longer paragraph.
-\end{NewSkillAction}
-
-\begin{NewSkillAction}[+]{A}
-    This is a test!
-\end{NewSkillAction}
-
-\begin{NewSkillAction}[+]{D}
-    This is a test!
-\end{NewSkillAction}
 
 \end{document}
 
